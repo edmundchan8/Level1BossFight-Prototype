@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 742, y: 342}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 4342
+  controlID: 3693
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 102, y: 242}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 4343
+  controlID: 3694
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -329,14 +329,14 @@ MonoBehaviour:
     width: 473
     height: 733
   m_SceneLighting: 1
-  lastFramingTime: 3040.456055045128
+  lastFramingTime: 1301.5678119659424
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: -2.9958565, y: -1.2410122, z: 0}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: -2.9958565, y: -1.2410122, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -363,9 +363,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1.2213482
+    m_Target: 26.19869
     speed: 2
-    m_Value: 1.2213482
+    m_Value: 26.19869
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 342}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 4491
+  controlID: 3861
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -451,7 +451,7 @@ MonoBehaviour:
     y: 94
     width: 540
     height: 462
-  m_ScrollPosition: {x: 0, y: 122.95508}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -100
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 4492
+  controlID: 3862
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -535,9 +535,9 @@ MonoBehaviour:
     height: 250
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a6290000
-    m_LastClickedID: 0
-    m_ExpandedIDs: 820cffff1c28ffff90c6ffffa6f8ffffb0f8ffff3cfbffff0000000090290000
+    m_SelectedIDs: 1290ffff
+    m_LastClickedID: -28654
+    m_ExpandedIDs: 5897ffff98eeffffc0f7ffffe2fbffff0000000042250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -556,7 +556,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 15}
     m_SearchString: 
   m_ExpandedScenes:
-  - ManagerScene
+  - Game
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -628,13 +628,13 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Sprites
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: /Users/Edmund/Desktop/Level1BossFight-Prototype
+  m_LastProjectPath: /Users/Edmund/Desktop/ProtoType-Level1BossFight
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a0290000
-    m_LastClickedID: 10656
-    m_ExpandedIDs: 2a25000000ca9a3bffffff7f
+    m_SelectedIDs: 1e250000
+    m_LastClickedID: 9502
+    m_ExpandedIDs: 00000000a024000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -662,7 +662,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 2a25000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000a024000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -687,10 +687,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a6290000
-    m_LastClickedInstanceID: 10662
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: 1e220000ec2300008c9400000a9d0000a8220000ac2200000e2200009c2c0000402d0000dadcffff0c220000062f0000522300004645000006230000c0220000242200002e220000ec22000014460000103dfdffe822000020220000982b000044a50000e40002009a250000a6290000
+    m_SelectedInstanceIDs: 1290ffff
+    m_LastClickedInstanceID: -28654
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: 1e220000ec2300008c9400000a9d0000a8220000ac2200000e2200009c2c0000402d0000dadcffff0c220000062f0000522300004645000006230000c0220000242200002e220000ec22000014460000103dfdffe822000020220000982b000044a50000e40002009a250000a6290000f8240000b22b0000ba2b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
