@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8D92C744-6658-0B25-960D-4408B2B61EA2}</ProjectGuid>
+    <ProjectGuid>{100BDC17-2564-3730-0798-AE4B5A50A8E5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,6 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\FollowPlayer.cs" />
+     <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\LevelManager.cs" />
      <Compile Include="Assets\_Scripts\PlayerMove.cs" />
  <Reference Include="UnityEngine.UI">
