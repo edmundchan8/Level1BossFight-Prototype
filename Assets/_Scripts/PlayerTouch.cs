@@ -6,16 +6,22 @@ public class PlayerTouch : MonoBehaviour
 {
 	public enum eTerrain
 	{
-		grass, mountain, snow, desert
+		ground, home, grass, mountain, snow, desert
 	};
 	private eTerrain eState = eTerrain.grass;
 
 	void Update()
 	{
+		print(eState);
 		eTerrain currentState = eState;
 
 		switch(currentState)
 		{
+			case eTerrain.ground:
+				{
+					Debug.Log("You are on the ground.");
+				}
+				break;
 			case eTerrain.grass:
 				{
 					Debug.Log("You are on grass.");
@@ -35,6 +41,11 @@ public class PlayerTouch : MonoBehaviour
 				{
 					Debug.Log("You are on the snow");
 				}
+				break;			
+			case eTerrain.home:
+				{
+					GameController.instance.OnPlayerHome();
+				}
 				break;
 			default:
 				{
@@ -44,11 +55,11 @@ public class PlayerTouch : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D myCol)
+	void OnTriggerStay2D (Collider2D myCol)
 	{
 		if (myCol.gameObject.tag == "Home")
 		{
-			Debug.Log("You've reached your home.");
+			eState = eTerrain.home;
 		}
 		else if (myCol.gameObject.tag == "Desert")
 		{
@@ -66,5 +77,11 @@ public class PlayerTouch : MonoBehaviour
 		{
 			eState = eTerrain.snow;
 		}
+	}
+
+	void OnTriggerExit2D()
+	{
+		eState = eTerrain.ground;
+		GameController.instance.OnPlayerLeftHome();
 	}
 }
