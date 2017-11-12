@@ -42,3 +42,13 @@
 /Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/UnityEngine.Timeline.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/UnityEngine.UIAutomation.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/UnityEngine.SpatialTracking.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/UnityEngine.Purchasing.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/Unity.Cecil.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/ExCSS.Unity.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/Unity.Legacy.NRefactory.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/Unity.Cecil.Pdb.dll
+/Users/Edmund/Desktop/ProtoType-Level1BossFight/Temp/bin/Debug/Unity.Cecil.Mdb.dll

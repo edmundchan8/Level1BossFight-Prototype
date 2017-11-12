@@ -26,6 +26,16 @@ public class PlayerTouch : MonoBehaviour
 					Debug.Log("You are on the dessert");
 				}
 				break;
+			case eTerrain.mountain:
+				{
+					Debug.Log("You are on the mountain");
+				}
+				break;
+			case eTerrain.snow:
+				{
+					Debug.Log("You are on the snow");
+				}
+				break;
 			default:
 				{
 					Debug.Log("You are not stepping on anything");
@@ -43,6 +53,18 @@ public class PlayerTouch : MonoBehaviour
 		else if (myCol.gameObject.tag == "Desert")
 		{
 			eState = eTerrain.desert;
+		}
+		else if (myCol.gameObject.tag == "Grass")
+		{
+			eState = eTerrain.grass;
+		}
+		else if (myCol.gameObject.tag == "Mountain")
+		{
+			eState = eTerrain.mountain;
+		}
+		else if (myCol.gameObject.tag == "Snow")
+		{
+			eState = eTerrain.snow;
 		}
 	}
 }
