@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
 	GameObject m_Player;
 	[SerializeField]
 	GameObject m_SaveButton;
-
+	[SerializeField]
+	GameData m_GameData;
 
 	public static GameController instance;
 
@@ -38,5 +39,15 @@ public class GameController : MonoBehaviour
 	public void OnPlayerLeftHome()
 	{
 		m_SaveButton.SetActive(false);
+	}
+
+	public int GetPlayerHealth()
+	{
+		return m_GameData.GetPlayerPrefsHealth();
+	}
+
+	public Vector2 GetPlayerPos()
+	{
+		return m_Player.transform.position;
 	}
 }
