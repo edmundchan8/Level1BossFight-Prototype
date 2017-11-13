@@ -16,13 +16,16 @@ public class GameData : MonoBehaviour
 
 	public void SaveCurrentGameState()
 	{
-		int health = GameController.instance.GetPlayerHealth();
+		int health = GetPlayerPrefsHealth();
 		Vector2 playerPos = GameController.instance.GetPlayerPos();
 		SavePlayerCurrentHealth(health);
 		float x = playerPos.x;
 		float y = playerPos.y;
 		SavePlayerCurrentXPos(x);
 		SavePlayerCurrentYPos(y);
+
+		print(health);
+		print(x + " " + y);
 	}
 
 	public void SavePlayerCurrentHealth(int hp)

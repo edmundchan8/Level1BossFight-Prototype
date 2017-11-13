@@ -55,6 +55,7 @@
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GameData.cs" />
      <Compile Include="Assets\_Scripts\LevelManager.cs" />
+     <Compile Include="Assets\_Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\_Scripts\PlayerMove.cs" />
      <Compile Include="Assets\_Scripts\PlayerTouch.cs" />
  <Reference Include="UnityEngine.UI">

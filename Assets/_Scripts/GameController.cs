@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
 	GameObject m_SaveButton;
 	[SerializeField]
 	GameData m_GameData;
+	[SerializeField]
+	PlayerHealth m_PlayerHealth;
 
 	public static GameController instance;
 
@@ -44,6 +46,11 @@ public class GameController : MonoBehaviour
 	public int GetPlayerHealth()
 	{
 		return m_GameData.GetPlayerPrefsHealth();
+	}
+
+	public void SetPlayerPrefsHealth()
+	{
+		m_GameData.SavePlayerCurrentHealth(m_PlayerHealth.ReturnPlayerHealth());
 	}
 
 	public Vector2 GetPlayerPos()
