@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour 
+public class PlayerStats : MonoBehaviour 
 {
 	int HEALTH_IMAGE_HEIGHT = 20;
 	int MIN_HEALTH = 0;
@@ -12,6 +12,9 @@ public class PlayerHealth : MonoBehaviour
 	int m_PlayerHealth;
 	[SerializeField]
 	RectTransform m_HealthImage;
+
+	int m_PlayerStrength = 10;
+	int m_PlayerDefence = 10;
 
 	void Start()
 	{
@@ -57,5 +60,25 @@ public class PlayerHealth : MonoBehaviour
 	public void PlayerDead()
 	{
 		Debug.Log("Player dead");
+	}
+
+	public void IncreasePlayerStrength(int increaseStrength)
+	{
+		m_PlayerStrength += increaseStrength;
+	}
+
+	public void IncreasePlayerDefence(int increaseDefence)
+	{
+		m_PlayerDefence += increaseDefence;
+	}
+
+	public int ReturnPlayerStrength()
+	{
+		return m_PlayerStrength;
+	}
+
+	public int ReturnPlayerDefence()
+	{
+		return m_PlayerDefence;
 	}
 }

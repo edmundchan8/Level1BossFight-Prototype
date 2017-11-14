@@ -25,9 +25,10 @@ public class PlayerAttack : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D myCol)
 	{
-		if (myCol.gameObject.tag == "Worm")
+		if (myCol.gameObject.tag == "Enemy")
 		{
-			Destroy(myCol.gameObject);
+			EnemyHealth enemyHP = myCol.gameObject.GetComponent<EnemyHealth>();
+			enemyHP.TakeDamage(GameController.instance.ReturnPlayerStrength());
 		}
 	}
 

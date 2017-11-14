@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
 	[SerializeField]
 	GameData m_GameData;
 	[SerializeField]
-	PlayerHealth m_PlayerHealth;
+	PlayerStats m_PlayerStats;
 
 	public static GameController instance;
 
@@ -50,11 +50,17 @@ public class GameController : MonoBehaviour
 
 	public void SetPlayerPrefsHealth()
 	{
-		m_GameData.SavePlayerCurrentHealth(m_PlayerHealth.ReturnPlayerHealth());
+		m_GameData.SavePlayerCurrentHealth(m_PlayerStats.ReturnPlayerHealth());
 	}
 
 	public Vector2 GetPlayerPos()
 	{
 		return m_Player.transform.position;
+	}
+
+	//TODO: Change this to the playerprefs
+	public int ReturnPlayerStrength()
+	{
+		return m_PlayerStats.ReturnPlayerStrength();
 	}
 }
