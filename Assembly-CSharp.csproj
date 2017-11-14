@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\EnemyHealth.cs" />
+     <Compile Include="Assets\_Scripts\EnemyMove.cs" />
      <Compile Include="Assets\_Scripts\FollowPlayer.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GameData.cs" />
