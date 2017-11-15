@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour 
+public class EnemyStats : MonoBehaviour 
 {
 	[SerializeField]
 	int HEALTH_AMOUNT;
+	[SerializeField]
+	int ATTACK_DAMAGE;
 	int m_EnemyHealth;
+	int m_EnemyAttack;
 
 	EnemyMove m_EnemyMove;
 
 	void Start()
 	{
 		m_EnemyHealth = HEALTH_AMOUNT;
+		m_EnemyAttack = ATTACK_DAMAGE;
 		m_EnemyMove = gameObject.GetComponent<EnemyMove>();
 	}
 
@@ -23,6 +27,11 @@ public class EnemyHealth : MonoBehaviour
 			m_EnemyHealth = 0;
 			DestroyEnemy();
 		}
+	}
+
+	public int DealDamage()
+	{
+		return m_EnemyAttack;
 	}
 
 	public void TakeDamage(int damage)

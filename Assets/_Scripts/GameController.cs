@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 	GameData m_GameData;
 	[SerializeField]
 	PlayerStats m_PlayerStats;
+	[SerializeField]
+	PlayerAttack m_PlayerAttack;
 
 	public static GameController instance;
 
@@ -76,5 +78,10 @@ public class GameController : MonoBehaviour
 	public int ReturnPlayerDefence()
 	{
 		return m_GameData.GetPlayerCurrentDefence();
+	}
+
+	public PlayerAttack ReturnPlayerAttackScript()
+	{
+		return m_PlayerAttack;
 	}
 }

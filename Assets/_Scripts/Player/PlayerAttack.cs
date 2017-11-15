@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
 	[SerializeField]
 	SpriteRenderer m_Attack;
 	[SerializeField]
-	BoxCollider2D m_AttackCollider;
+	CapsuleCollider2D m_AttackCollider;
 
 	void Update()
 	{
@@ -27,9 +27,13 @@ public class PlayerAttack : MonoBehaviour
 	{
 		if (myCol.gameObject.tag == "Enemy")
 		{
-			EnemyHealth enemyHP = myCol.gameObject.GetComponent<EnemyHealth>();
+			EnemyStats enemyHP = myCol.gameObject.GetComponent<EnemyStats>();
 			enemyHP.TakeDamage(GameController.instance.ReturnPlayerStrength());
 		}
 	}
 
+	public bool PlayerAttacking()
+	{
+		return m_Attack.isVisible;
+	}
 }
