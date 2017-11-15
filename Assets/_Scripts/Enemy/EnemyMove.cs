@@ -9,13 +9,9 @@ public class EnemyMove : MonoBehaviour
 	float m_Timer = 0f;
 	float CAN_MOVE_AMOUNT = 2f;
 	float MOVE_DURATION = 4f;
-	Vector2 m_MovingDirection;
-	Rigidbody2D m_Rigidbody2D;
-
-	void Start()
-	{
-		m_Rigidbody2D = this.gameObject.GetComponent<Rigidbody2D>();
-	}
+	[SerializeField]
+	float PUSH_BACK_AMOUNT;
+	Vector2 m_DirectionValue;
 
 	void FixedUpdate()
 	{
@@ -36,14 +32,12 @@ public class EnemyMove : MonoBehaviour
 
 		if (currentPos.x < playerPos.x)
 		{
-			m_MovingDirection = Vector2.right;
 			Vector2 newPos = transform.localPosition;
 			newPos.x += m_EnemyMovement;
 			transform.localPosition = newPos;
 		}
 		else
 		{
-			m_MovingDirection = Vector2.left;
 			Vector2 newPos = transform.localPosition;
 			newPos.x -= m_EnemyMovement;
 			transform.localPosition = newPos;
@@ -51,14 +45,12 @@ public class EnemyMove : MonoBehaviour
 
 		if (currentPos.y < playerPos.y)
 		{
-			m_MovingDirection = Vector2.up;
 			Vector2 newPos = transform.localPosition;
 			newPos.y += m_EnemyMovement;
 			transform.localPosition = newPos;
 		}
 		else
 		{
-			m_MovingDirection = Vector2.down;
 			Vector2 newPos = transform.localPosition;
 			newPos.y -= m_EnemyMovement;
 			transform.localPosition = newPos;
@@ -73,6 +65,8 @@ public class EnemyMove : MonoBehaviour
 	//TODO: this push back isn't work, when internet is back, have a think about how to push the enemy back
 	public void EnemyPushBack()
 	{
-		m_Rigidbody2D.AddForce(-m_MovingDirection, ForceMode2D.Force);
+		Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
+		m_DirectionValue = (GameController.instance.GetPlayerPos() - enemyPos).normalized;
+		transform.position = new Vector2(enemyPos.x + (PUSH_BACK_AMOUNT * -m_DirectionValue.x), (enemyPos.y + (PUSH_BACK_AMOUNT * -m_DirectionValue.y)));
 	}
 }
