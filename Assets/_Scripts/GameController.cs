@@ -58,9 +58,23 @@ public class GameController : MonoBehaviour
 		return m_Player.transform.position;
 	}
 
-	//TODO: Change this to the playerprefs
+	public void SetPlayerPrefsStrength()
+	{
+		m_GameData.SavePlayerCurrentStrength(m_PlayerStats.ReturnPlayerStrength());
+	}
+
 	public int ReturnPlayerStrength()
 	{
-		return m_PlayerStats.ReturnPlayerStrength();
+		return m_GameData.GetPlayerCurrentStrength();
+	}
+
+	public void SetPlayerPrefsDefence()
+	{
+		m_GameData.SavePlayerCurrentDefence(m_PlayerStats.ReturnPlayerDefence());
+	}
+
+	public int ReturnPlayerDefence()
+	{
+		return m_GameData.GetPlayerCurrentDefence();
 	}
 }

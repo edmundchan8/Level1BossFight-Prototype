@@ -52,4 +52,24 @@ public class GameData : MonoBehaviour
 	{
 		return new Vector2(PlayerPrefs.GetFloat("PlayerXPos"), PlayerPrefs.GetFloat("PlayerYPos"));
 	}
+
+	public void SavePlayerCurrentStrength(int strength)
+	{
+		PlayerPrefs.SetInt("PlayerStrength", strength);
+	}
+
+	public int GetPlayerCurrentStrength()
+	{
+		return PlayerPrefs.GetInt("PlayerStrength");
+	}
+
+	public void SavePlayerCurrentDefence(int defence)
+	{
+		PlayerPrefs.SetInt("PlayerDefence", defence);
+	}
+
+	public int GetPlayerCurrentDefence()
+	{
+		return PlayerPrefs.GetInt("PlayerDefence");
+	}
 }

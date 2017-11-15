@@ -32,7 +32,6 @@ public class PlayerStats : MonoBehaviour
 			m_PlayerHealth = MIN_HEALTH;
 		}
 		SetPlayerHealth();
-		ReturnPlayerHealth();
 	}
 
 	void OnHealthRecover(int recoverAmount) 
@@ -43,7 +42,6 @@ public class PlayerStats : MonoBehaviour
 			m_PlayerHealth = MAX_HEALTH;
 		}
 		SetPlayerHealth();
-		ReturnPlayerHealth();
 	}
 
 	void SetPlayerHealth()
@@ -65,6 +63,7 @@ public class PlayerStats : MonoBehaviour
 	public void IncreasePlayerStrength(int increaseStrength)
 	{
 		m_PlayerStrength += increaseStrength;
+		GameController.instance.SetPlayerPrefsStrength();
 	}
 
 	public void IncreasePlayerDefence(int increaseDefence)

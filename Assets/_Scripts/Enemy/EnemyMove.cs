@@ -62,7 +62,6 @@ public class EnemyMove : MonoBehaviour
 		}
 	}
 
-	//TODO: this push back isn't work, when internet is back, have a think about how to push the enemy back
 	public void EnemyPushBack()
 	{
 		Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
