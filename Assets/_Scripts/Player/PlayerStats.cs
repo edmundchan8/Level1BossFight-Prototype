@@ -21,6 +21,12 @@ public class PlayerStats : MonoBehaviour
 		m_PlayerHealth = MAX_HEALTH;
 		m_HealthImage.sizeDelta = new Vector2(m_PlayerHealth, HEALTH_IMAGE_HEIGHT);
 		GameController.instance.SetPlayerPrefsHealth();
+		//These two methods set the player strength and defence
+		//These two should only be for when we start the game for the first time
+		//Later on, when we load a saved state, we need to either call these first, then call the playerprefs ones
+		//On on loading a saved state, ignore these and call the ones from the playerprefs.
+		SetPlayerStrength();
+		SetPlayerDefence();
 	}
 
 	void OnPlayerHit(int damageAmount)
@@ -50,6 +56,16 @@ public class PlayerStats : MonoBehaviour
 		GameController.instance.SetPlayerPrefsHealth();
 	}
 
+	void SetPlayerStrength()
+	{
+		GameController.instance.SetPlayerPrefsStrength(m_PlayerStrength);
+	}
+
+	void SetPlayerDefence()
+	{
+		GameController.instance.SetPlayerPrefsDefence(m_PlayerDefence);
+	}
+
 	public int ReturnPlayerHealth()
 	{
 		return m_PlayerHealth;
@@ -63,7 +79,7 @@ public class PlayerStats : MonoBehaviour
 	public void IncreasePlayerStrength(int increaseStrength)
 	{
 		m_PlayerStrength += increaseStrength;
-		GameController.instance.SetPlayerPrefsStrength();
+		GameController.instance.SetPlayerPrefsStrength(m_PlayerStrength);
 	}
 
 	public void IncreasePlayerDefence(int increaseDefence)

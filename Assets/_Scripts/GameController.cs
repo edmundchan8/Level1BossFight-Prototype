@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour 
 {
+	[Header ("Player")]
 	[SerializeField]
 	GameObject m_Player;
-	[SerializeField]
-	GameObject m_SaveButton;
-	[SerializeField]
-	GameData m_GameData;
 	[SerializeField]
 	PlayerStats m_PlayerStats;
 	[SerializeField]
 	PlayerAttack m_PlayerAttack;
+
+	[Header("Save Data")]
+	[SerializeField]
+	GameObject m_SaveButton;
+	[SerializeField]
+	GameData m_GameData;
 
 	public static GameController instance;
 
@@ -60,9 +63,9 @@ public class GameController : MonoBehaviour
 		return m_Player.transform.position;
 	}
 
-	public void SetPlayerPrefsStrength()
+	public void SetPlayerPrefsStrength(int strength)
 	{
-		m_GameData.SavePlayerCurrentStrength(m_PlayerStats.ReturnPlayerStrength());
+		m_GameData.SavePlayerCurrentStrength(strength);
 	}
 
 	public int ReturnPlayerStrength()
@@ -70,9 +73,9 @@ public class GameController : MonoBehaviour
 		return m_GameData.GetPlayerCurrentStrength();
 	}
 
-	public void SetPlayerPrefsDefence()
+	public void SetPlayerPrefsDefence(int defence)
 	{
-		m_GameData.SavePlayerCurrentDefence(m_PlayerStats.ReturnPlayerDefence());
+		m_GameData.SavePlayerCurrentDefence(defence);
 	}
 
 	public int ReturnPlayerDefence()

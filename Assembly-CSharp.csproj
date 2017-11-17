@@ -61,6 +61,8 @@
      <Compile Include="Assets\_Scripts\Player\PlayerMove.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerStats.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerTouch.cs" />
+     <Compile Include="Assets\_Scripts\Spawner.cs" />
+     <Compile Include="Assets\_Scripts\Timer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

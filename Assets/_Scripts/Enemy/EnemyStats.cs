@@ -11,6 +11,7 @@ public class EnemyStats : MonoBehaviour
 	int m_EnemyHealth;
 	int m_EnemyAttack;
 
+	[Header ("Accessor")]
 	EnemyMove m_EnemyMove;
 
 	void Start()
