@@ -9,12 +9,14 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField]
 	float KNOCK_BACK_AMOUNT;
 
-
-
 	void FixedUpdate () 
 	{
-		//Move Player with WASD / UDLR
-		transform.Translate(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed, 0f);
+		if (Input.anyKey)
+		{
+			//Move Player with WASD / UDLR
+			transform.Translate(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed, 0f);
+			transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal"), 1f);
+		}	
 	}
 
 	void OnTriggerEnter2D(Collider2D myCol)
