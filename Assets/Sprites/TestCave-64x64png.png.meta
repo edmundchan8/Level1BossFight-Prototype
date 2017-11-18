@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e680743f62cc74f6a9c7d9a97955e19a
-timeCreated: 1511048712
+guid: 0f35e794ed5034cb29f96543dcc7cf88
+timeCreated: 1511049235
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -115,9 +115,9 @@ TextureImporter:
       name: TestCave-64x64png_1
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 60
+        width: 64
         height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
