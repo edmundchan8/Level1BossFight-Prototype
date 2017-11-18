@@ -32,5 +32,6 @@ public class PlayerMove : MonoBehaviour
 		Vector2 playerPos = new Vector2(transform.position.x, transform.position.y);
 		Vector2 knockBackDirection = (enemyPos - playerPos).normalized;
 		transform.position = new Vector2 (playerPos.x + (KNOCK_BACK_AMOUNT * -knockBackDirection.x), playerPos.y + (KNOCK_BACK_AMOUNT * knockBackDirection.y));
+		GameController.instance.PlayerStatsOnDamage(damage);
 	}
 }

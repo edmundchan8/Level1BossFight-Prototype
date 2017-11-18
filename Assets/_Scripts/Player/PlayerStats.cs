@@ -29,7 +29,7 @@ public class PlayerStats : MonoBehaviour
 		SetPlayerDefence();
 	}
 
-	void OnPlayerHit(int damageAmount)
+	public void OnPlayerHit(int damageAmount)
 	{
 		m_PlayerHealth -= damageAmount;
 		if (m_PlayerHealth <= MIN_HEALTH)

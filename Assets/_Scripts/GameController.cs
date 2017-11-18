@@ -87,4 +87,9 @@ public class GameController : MonoBehaviour
 	{
 		return m_PlayerAttack;
 	}
+
+	public void PlayerStatsOnDamage(int damage)
+	{
+		m_PlayerStats.OnPlayerHit(damage);
+	}
 }
