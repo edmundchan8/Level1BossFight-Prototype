@@ -8,6 +8,8 @@ public class PlayerMove : MonoBehaviour
 	float m_PlayerSpeed;
 	[SerializeField]
 	float KNOCK_BACK_AMOUNT;
+	int FACING_LEFT = -1;
+	int FACING_RIGHT = 1;
 
 	PlayerStats m_PlayerStats;
 
@@ -20,6 +22,14 @@ public class PlayerMove : MonoBehaviour
 	{
 		//Move Player with WASD / UDLR
 		transform.Translate(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed, 0f);
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.LeftArrow))
+		{
+			transform.localScale = new Vector2(FACING_LEFT, transform.localScale.y);
+		}
+		else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow))
+		{
+			transform.localScale = new Vector2(FACING_RIGHT, transform.localScale.y);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D myCol)

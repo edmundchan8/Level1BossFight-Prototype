@@ -10,18 +10,17 @@ public class EnemyStats : MonoBehaviour
 	int ATTACK_DAMAGE;
 	int m_EnemyHealth;
 	int m_EnemyAttack;
-	float DEATH_DURATION = 2f;
-
+	float DEATH_DURATION = 1f;
+	bool m_IsDead = false;
 	[Header ("Accessor")]
 	EnemyMove m_EnemyMove;
 	Animator m_Animator;
-	SpriteRenderer m_SpriteRenderer;
+	BoxCollider2D m_BoxCollider2D;
 
 	void Start()
 	{
 		m_Animator = GetComponent<Animator>();
-		m_SpriteRenderer = GetComponent<SpriteRenderer>();
-		m_SpriteRenderer.enabled = true;
+		m_BoxCollider2D = GetComponent<BoxCollider2D>();
 		m_EnemyHealth = HEALTH_AMOUNT;
 		m_EnemyAttack = ATTACK_DAMAGE;
 		m_EnemyMove = gameObject.GetComponent<EnemyMove>();
@@ -49,8 +48,8 @@ public class EnemyStats : MonoBehaviour
 
 	void EnemyDies()
 	{
-		//DisableSpriteRenderer();
-		//TODO: Stop enemy moving/disable their attacking ability as the gameobject there can still cause player damage
+		m_IsDead = true;
+		DisableBoxCollider2D();
 		m_Animator.SetBool("IsDead", true);
 		Invoke("DestroyEnemy", DEATH_DURATION);
 	}
@@ -60,8 +59,13 @@ public class EnemyStats : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	void DisableSpriteRenderer()
+	void DisableBoxCollider2D()
 	{
-		m_SpriteRenderer.enabled = false;
+		m_BoxCollider2D.enabled = false;
+	}
+
+	public bool IsEnemyDead()
+	{
+		return m_IsDead;
 	}
 }

@@ -13,10 +13,18 @@ public class EnemyMove : MonoBehaviour
 	float PUSH_BACK_AMOUNT;
 	Vector2 m_DirectionValue;
 
+	[Header("Accessor")]
+	EnemyStats m_EnemyStats;
+
+	void Start()
+	{
+		m_EnemyStats = GetComponent<EnemyStats>();
+	}
+
 	void FixedUpdate()
 	{
 		m_Timer += Time.deltaTime;
-		if (m_Timer > CAN_MOVE_AMOUNT)
+		if (m_Timer > CAN_MOVE_AMOUNT && !m_EnemyStats.IsEnemyDead())
 		{
 			MoveTowardsPlayer();
 		}
