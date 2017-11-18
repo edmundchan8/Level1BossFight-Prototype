@@ -9,14 +9,17 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField]
 	float KNOCK_BACK_AMOUNT;
 
+	PlayerStats m_PlayerStats;
+
+	void Start()
+	{
+		m_PlayerStats = GameController.instance.ReturnPlayerStats();
+	}
+
 	void FixedUpdate () 
 	{
-		if (Input.anyKey)
-		{
-			//Move Player with WASD / UDLR
-			transform.Translate(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed, 0f);
-			transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal"), 1f);
-		}	
+		//Move Player with WASD / UDLR
+		transform.Translate(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed, 0f);
 	}
 
 	void OnTriggerEnter2D(Collider2D myCol)
@@ -34,6 +37,6 @@ public class PlayerMove : MonoBehaviour
 		Vector2 playerPos = new Vector2(transform.position.x, transform.position.y);
 		Vector2 knockBackDirection = (enemyPos - playerPos).normalized;
 		transform.position = new Vector2 (playerPos.x + (KNOCK_BACK_AMOUNT * -knockBackDirection.x), playerPos.y + (KNOCK_BACK_AMOUNT * knockBackDirection.y));
-		GameController.instance.PlayerStatsOnDamage(damage);
+		m_PlayerStats.OnPlayerHit(damage);
 	}
 }

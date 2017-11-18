@@ -16,17 +16,20 @@ public class PlayerStats : MonoBehaviour
 	int m_PlayerStrength = 10;
 	int m_PlayerDefence = 10;
 
+	GameData m_GameData;
+
 	void Start()
 	{
 		m_PlayerHealth = MAX_HEALTH;
 		m_HealthImage.sizeDelta = new Vector2(m_PlayerHealth, HEALTH_IMAGE_HEIGHT);
-		GameController.instance.SetPlayerPrefsHealth();
+		m_GameData = GameController.instance.ReturnGameData();
+		m_GameData.SavePlayerCurrentHealth(m_PlayerHealth);
 		//These two methods set the player strength and defence
 		//These two should only be for when we start the game for the first time
 		//Later on, when we load a saved state, we need to either call these first, then call the playerprefs ones
 		//On on loading a saved state, ignore these and call the ones from the playerprefs.
-		SetPlayerStrength();
-		SetPlayerDefence();
+		m_GameData.SavePlayerCurrentStrength(m_PlayerStrength);
+		m_GameData.SavePlayerCurrentDefence(m_PlayerDefence);
 	}
 
 	public void OnPlayerHit(int damageAmount)
@@ -53,17 +56,7 @@ public class PlayerStats : MonoBehaviour
 	void SetPlayerHealth()
 	{
 		m_HealthImage.sizeDelta = new Vector2(m_PlayerHealth, HEALTH_IMAGE_HEIGHT);
-		GameController.instance.SetPlayerPrefsHealth();
-	}
-
-	void SetPlayerStrength()
-	{
-		GameController.instance.SetPlayerPrefsStrength(m_PlayerStrength);
-	}
-
-	void SetPlayerDefence()
-	{
-		GameController.instance.SetPlayerPrefsDefence(m_PlayerDefence);
+		m_GameData.SavePlayerCurrentHealth(m_PlayerHealth);
 	}
 
 	public int ReturnPlayerHealth()
@@ -79,21 +72,11 @@ public class PlayerStats : MonoBehaviour
 	public void IncreasePlayerStrength(int increaseStrength)
 	{
 		m_PlayerStrength += increaseStrength;
-		GameController.instance.SetPlayerPrefsStrength(m_PlayerStrength);
+		m_GameData.SavePlayerCurrentStrength(m_PlayerStrength);	
 	}
 
 	public void IncreasePlayerDefence(int increaseDefence)
 	{
 		m_PlayerDefence += increaseDefence;
-	}
-
-	public int ReturnPlayerStrength()
-	{
-		return m_PlayerStrength;
-	}
-
-	public int ReturnPlayerDefence()
-	{
-		return m_PlayerDefence;
 	}
 }

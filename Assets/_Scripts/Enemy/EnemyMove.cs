@@ -28,7 +28,7 @@ public class EnemyMove : MonoBehaviour
 		//Always aim to make current pos = GameController.instance.GetPlayerPos
 		// + / - x pos and + / - y pos
 		Vector2 currentPos = new Vector2(transform.localPosition.x, transform.localPosition.y);
-		Vector2 playerPos = GameController.instance.GetPlayerPos();
+		Vector2 playerPos = GameController.instance.ReturnPlayerPos();
 
 		if (currentPos.x < playerPos.x)
 		{
@@ -64,8 +64,8 @@ public class EnemyMove : MonoBehaviour
 
 	public void EnemyPushBack()
 	{
-		Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
-		m_DirectionValue = (GameController.instance.GetPlayerPos() - enemyPos).normalized;
-		transform.position = new Vector2(enemyPos.x + (PUSH_BACK_AMOUNT * -m_DirectionValue.x), (enemyPos.y + (PUSH_BACK_AMOUNT * -m_DirectionValue.y)));
+		Vector3 enemyPos = new Vector3(transform.position.x, transform.position.y, 0f);
+		m_DirectionValue = (GameController.instance.ReturnPlayerPos() - enemyPos).normalized;
+		transform.position = new Vector3(enemyPos.x + (PUSH_BACK_AMOUNT * -m_DirectionValue.x), (enemyPos.y + (PUSH_BACK_AMOUNT * -m_DirectionValue.y)),0f);
 	}
 }

@@ -9,6 +9,13 @@ public class PlayerAttack : MonoBehaviour
 	[SerializeField]
 	CapsuleCollider2D m_AttackCollider;
 
+	GameData m_GameData;
+
+	void Start()
+	{
+		m_GameData = GameController.instance.ReturnGameData();
+	}
+
 	void Update()
 	{
 		if (Input.GetButtonDown("Attack"))
@@ -28,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
 		if (myCol.gameObject.tag == "Enemy")
 		{
 			EnemyStats enemyHP = myCol.gameObject.GetComponent<EnemyStats>();
-			enemyHP.TakeDamage(GameController.instance.ReturnPlayerStrength());
+			enemyHP.TakeDamage(m_GameData.GetPlayerCurrentStrength());
 		}
 	}
 

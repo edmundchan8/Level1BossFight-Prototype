@@ -32,7 +32,38 @@ public class GameController : MonoBehaviour
 			Destroy(this.gameObject);
 		}
 	}
+		
+	public GameData ReturnGameData()
+	{
+		return m_GameData;
+	}
 
+	public PlayerStats ReturnPlayerStats()
+	{
+		return m_PlayerStats;
+	}
+
+	public PlayerAttack ReturnPlayerAttackScript()
+	{
+		return m_PlayerAttack;
+	}
+
+	public Vector3 ReturnPlayerPos()
+	{
+		return new Vector3(m_Player.transform.localPosition.x, m_Player.transform.localPosition.y, 0f);
+	}
+
+	public void OnPlayerHome()
+	{
+		m_SaveButton.SetActive(true);
+	}
+
+	public void OnPlayerLeftHome()
+	{
+		m_SaveButton.SetActive(false);
+	}
+
+	/*
 	public Vector3 ReturnPlayerPos()
 	{
 		return new Vector3(m_Player.transform.localPosition.x, m_Player.transform.localPosition.y, 0f);
@@ -92,4 +123,5 @@ public class GameController : MonoBehaviour
 	{
 		m_PlayerStats.OnPlayerHit(damage);
 	}
+	*/
 }
