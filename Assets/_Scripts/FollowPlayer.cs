@@ -5,8 +5,8 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour 
 {
 	Vector3 m_Offset;
-	float WIDTH_LIMIT = 54f;
-	float HEIGHT_LIMIT = 57f;
+	float WIDTH_LIMIT = 70f;
+	float HEIGHT_LIMIT = 83f;
 
 	void Start()
 	{
