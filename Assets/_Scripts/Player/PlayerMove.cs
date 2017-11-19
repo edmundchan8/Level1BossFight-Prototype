@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour
 	int FACING_RIGHT = 1;
 
 	PlayerStats m_PlayerStats;
+	[SerializeField]
+	Animator m_PlayerAnimator;
 
 	void Start()
 	{
@@ -25,10 +27,17 @@ public class PlayerMove : MonoBehaviour
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			transform.localScale = new Vector2(FACING_LEFT, transform.localScale.y);
+			m_PlayerAnimator.SetBool("IsWalking", true);
 		}
 		else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.localScale = new Vector2(FACING_RIGHT, transform.localScale.y);
+			m_PlayerAnimator.SetBool("IsWalking", true);
+		}
+
+		if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+		{
+			m_PlayerAnimator.SetBool("IsWalking", false);
 		}
 	}
 
