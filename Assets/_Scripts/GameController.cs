@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour 
 {
@@ -17,6 +18,10 @@ public class GameController : MonoBehaviour
 	GameObject m_SaveButton;
 	[SerializeField]
 	GameData m_GameData;
+
+	[Header("UI")]
+	[SerializeField]
+	Image m_WarningPanel;
 
 	public static GameController instance;
 
@@ -63,65 +68,8 @@ public class GameController : MonoBehaviour
 		m_SaveButton.SetActive(false);
 	}
 
-	/*
-	public Vector3 ReturnPlayerPos()
+	public Image ReturnWarningPanel()
 	{
-		return new Vector3(m_Player.transform.localPosition.x, m_Player.transform.localPosition.y, 0f);
+		return m_WarningPanel;
 	}
-
-	public void OnPlayerHome()
-	{
-		m_SaveButton.SetActive(true);
-	}
-
-	public void OnPlayerLeftHome()
-	{
-		m_SaveButton.SetActive(false);
-	}
-
-	public int GetPlayerHealth()
-	{
-		return m_GameData.GetPlayerPrefsHealth();
-	}
-
-	public void SetPlayerPrefsHealth()
-	{
-		m_GameData.SavePlayerCurrentHealth(m_PlayerStats.ReturnPlayerHealth());
-	}
-
-	public Vector2 GetPlayerPos()
-	{
-		return m_Player.transform.position;
-	}
-
-	public void SetPlayerPrefsStrength(int strength)
-	{
-		m_GameData.SavePlayerCurrentStrength(strength);
-	}
-
-	public int ReturnPlayerStrength()
-	{
-		return m_GameData.GetPlayerCurrentStrength();
-	}
-
-	public void SetPlayerPrefsDefence(int defence)
-	{
-		m_GameData.SavePlayerCurrentDefence(defence);
-	}
-
-	public int ReturnPlayerDefence()
-	{
-		return m_GameData.GetPlayerCurrentDefence();
-	}
-
-	public PlayerAttack ReturnPlayerAttackScript()
-	{
-		return m_PlayerAttack;
-	}
-
-	public void PlayerStatsOnDamage(int damage)
-	{
-		m_PlayerStats.OnPlayerHit(damage);
-	}
-	*/
 }
