@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
 	int HEALTH_IMAGE_HEIGHT = 20;
 	int MIN_HEALTH = 0;
 	int MAX_HEALTH = 100;
+	int HEALTH_WARNING_LIMIT = 30;
 
 	int m_PlayerHealth;
 	[SerializeField]
@@ -30,6 +31,18 @@ public class PlayerStats : MonoBehaviour
 		//On on loading a saved state, ignore these and call the ones from the playerprefs.
 		m_GameData.SavePlayerCurrentStrength(m_PlayerStrength);
 		m_GameData.SavePlayerCurrentDefence(m_PlayerDefence);
+	}
+
+	void Update()
+	{
+		if (m_GameData.GetPlayerPrefsHealth() <= HEALTH_WARNING_LIMIT)
+		{
+			GameController.instance.ReturnWarningScript().StartWarningPanel();
+		}
+		else
+		{
+			GameController.instance.ReturnWarningScript().DisableWarningPanel();
+		}
 	}
 
 	public void OnPlayerHit(int damageAmount)

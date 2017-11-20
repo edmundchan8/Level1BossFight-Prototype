@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 
 	[Header("UI")]
 	[SerializeField]
-	Image m_WarningPanel;
+	Warning m_WarningScript;
 
 	public static GameController instance;
 
@@ -68,8 +68,8 @@ public class GameController : MonoBehaviour
 		m_SaveButton.SetActive(false);
 	}
 
-	public Image ReturnWarningPanel()
+	public Warning ReturnWarningScript()
 	{
-		return m_WarningPanel;
+		return m_WarningScript;
 	}
 }
