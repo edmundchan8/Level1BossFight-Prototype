@@ -57,6 +57,7 @@
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GameData.cs" />
      <Compile Include="Assets\_Scripts\LevelManager.cs" />
+     <Compile Include="Assets\_Scripts\PickUpScript.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMove.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerStats.cs" />

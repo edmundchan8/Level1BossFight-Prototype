@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour 
 {
+	[Header("Stats")]
 	[SerializeField]
 	int HEALTH_AMOUNT;
 	[SerializeField]
 	int ATTACK_DAMAGE;
+	[SerializeField]
+	GameObject m_ItemDrop;
+
 	int m_EnemyHealth;
 	int m_EnemyAttack;
 	float DEATH_DURATION = 1f;
 	bool m_IsDead = false;
+
 	[Header ("Accessor")]
 	EnemyMove m_EnemyMove;
 	Animator m_Animator;
@@ -56,6 +61,7 @@ public class EnemyStats : MonoBehaviour
 
 	void DestroyEnemy()
 	{
+		Instantiate(m_ItemDrop, transform.localPosition, Quaternion.identity);
 		Destroy(gameObject);
 	}
 

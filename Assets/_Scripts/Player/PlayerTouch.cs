@@ -79,6 +79,19 @@ public class PlayerTouch : MonoBehaviour
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D myCol)
+	{
+		if (myCol.gameObject.tag == "PickUp")
+		{
+			PickUpScript pickUp = myCol.gameObject.GetComponent<PickUpScript>();
+			string pickUpName = pickUp.ReturnPickUpState();
+			pickUp.PickedUpDestroy();
+			//TODO: At the moment, pick up detected, get the name of the enum returned and destroy pick up, then print name of pickup
+			//but later, we should update our backpack with the item we picked up
+			print(pickUpName);
+		}
+	}
+
 	void OnTriggerExit2D()
 	{
 		eState = eTerrain.ground;

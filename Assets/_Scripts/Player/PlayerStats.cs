@@ -17,10 +17,15 @@ public class PlayerStats : MonoBehaviour
 	int m_PlayerStrength = 10;
 	int m_PlayerDefence = 10;
 
+	[SerializeField]
+	GameObject m_BackPack;
+	Animator m_BackPackAnimator;
+
 	GameData m_GameData;
 
 	void Start()
 	{
+		m_BackPackAnimator = m_BackPack.GetComponent<Animator>();
 		m_PlayerHealth = MAX_HEALTH;
 		m_HealthImage.sizeDelta = new Vector2(m_PlayerHealth, HEALTH_IMAGE_HEIGHT);
 		m_GameData = GameController.instance.ReturnGameData();
@@ -35,6 +40,11 @@ public class PlayerStats : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetKeyUp(KeyCode.I))
+		{
+			m_BackPackAnimator.SetTrigger("CallBackPack");
+		}
+
 		if (m_GameData.GetPlayerPrefsHealth() <= HEALTH_WARNING_LIMIT)
 		{
 			GameController.instance.ReturnWarningScript().StartWarningPanel();
