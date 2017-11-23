@@ -5,10 +5,10 @@ using UnityEngine;
 public class PickUpScript : MonoBehaviour 
 {
 	float expiryDate = 8f;
-	private enum ePickUp {rubbish, meat, wood, stone, herb, sword, shield, leather, scale, bone}
+	private enum ePickUp {Rubbish, Meat, Wood, Stone, Herb, Sword, Shield, Leather, Scale, Bone}
 
 	[SerializeField]
-	ePickUp m_PickUpState = ePickUp.rubbish;
+	ePickUp m_PickUpState = ePickUp.Rubbish;
 
 	void Start()
 	{

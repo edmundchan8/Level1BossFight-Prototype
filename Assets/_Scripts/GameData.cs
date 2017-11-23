@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour 
 {
+	[Header("PickUp Items")]
+	int m_Meat;
+
 	public Vector2 LoadPlayerPos()
 	{
 		return GetPlayerPrefsPlayerPos();
@@ -71,5 +74,15 @@ public class GameData : MonoBehaviour
 	public int GetPlayerCurrentDefence()
 	{
 		return PlayerPrefs.GetInt("PlayerDefence");
+	}
+
+	public void SaveCurrentMeatAmount(int amount)
+	{
+		PlayerPrefs.SetInt("PlayerPrefsMeat", amount);
+	}
+
+	public int GetCurrentMeatAmount()
+	{
+		return PlayerPrefs.GetInt("PlayerPrefsMeat");
 	}
 }

@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
 	[Header("UI")]
 	[SerializeField]
 	Warning m_WarningScript;
+	[SerializeField]
+	BackPackScript m_BackPack;
 
 	public static GameController instance;
 
@@ -71,5 +73,10 @@ public class GameController : MonoBehaviour
 	public Warning ReturnWarningScript()
 	{
 		return m_WarningScript;
+	}
+
+	public BackPackScript ReturnBackPack()
+	{
+		return m_BackPack;
 	}
 }

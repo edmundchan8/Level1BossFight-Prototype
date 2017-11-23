@@ -88,7 +88,7 @@ public class PlayerTouch : MonoBehaviour
 			pickUp.PickedUpDestroy();
 			//TODO: At the moment, pick up detected, get the name of the enum returned and destroy pick up, then print name of pickup
 			//but later, we should update our backpack with the item we picked up
-			print(pickUpName);
+			GameController.instance.ReturnBackPack().SetIcon(pickUpName, 1);
 		}
 	}
 
