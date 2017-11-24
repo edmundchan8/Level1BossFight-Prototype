@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour 
 {
-	[Header("PickUp Items")]
-	int m_Meat;
-
 	public Vector2 LoadPlayerPos()
 	{
 		return GetPlayerPrefsPlayerPos();
@@ -26,9 +23,6 @@ public class GameData : MonoBehaviour
 		float y = playerPos.y;
 		SavePlayerCurrentXPos(x);
 		SavePlayerCurrentYPos(y);
-
-		print(health);
-		print(x + " " + y);
 	}
 
 	public void SavePlayerCurrentHealth(int hp)
@@ -84,5 +78,35 @@ public class GameData : MonoBehaviour
 	public int GetCurrentMeatAmount()
 	{
 		return PlayerPrefs.GetInt("PlayerPrefsMeat");
+	}
+
+	public void SaveCurrentWoodAmount(int amount)
+	{
+		PlayerPrefs.SetInt("PlayerPrefsWood", amount);
+	}
+
+	public int GetCurrentWoodAmount()
+	{
+		return PlayerPrefs.GetInt("PlayerPrefsWood");
+	}
+
+	public void SaveCurrentStoneAmount(int amount)
+	{
+		PlayerPrefs.SetInt("PlayerPrefsStone", amount);
+	}
+
+	public int GetCurrentStoneAmount()
+	{
+		return PlayerPrefs.GetInt("PlayerPrefsStone");
+	}
+		
+	public void SaveCurrentLeatherAmount(int amount)
+	{
+		PlayerPrefs.SetInt("PlayerPrefsLeather", amount);
+	}
+
+	public int GetCurrentLeatherAmount()
+	{
+		return PlayerPrefs.GetInt("PlayerPrefsLeather");
 	}
 }

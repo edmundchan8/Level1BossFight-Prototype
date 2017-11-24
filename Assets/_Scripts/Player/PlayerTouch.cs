@@ -10,6 +10,10 @@ public class PlayerTouch : MonoBehaviour
 	};
 	private eTerrain eState = eTerrain.grass;
 
+	[Header("CONST SETTINGS")]
+	int ADD_ONE = 1;
+	int REMOVE_ONE = -1;
+
 	void Update()
 	{
 		print(eState);
@@ -86,9 +90,7 @@ public class PlayerTouch : MonoBehaviour
 			PickUpScript pickUp = myCol.gameObject.GetComponent<PickUpScript>();
 			string pickUpName = pickUp.ReturnPickUpState();
 			pickUp.PickedUpDestroy();
-			//TODO: At the moment, pick up detected, get the name of the enum returned and destroy pick up, then print name of pickup
-			//but later, we should update our backpack with the item we picked up
-			GameController.instance.ReturnBackPack().SetIcon(pickUpName, 1);
+			GameController.instance.ReturnBackPack().SetIcon(pickUpName, ADD_ONE);
 		}
 	}
 

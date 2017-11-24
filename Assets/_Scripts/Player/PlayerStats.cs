@@ -44,6 +44,10 @@ public class PlayerStats : MonoBehaviour
 		{
 			m_BackPackAnimator.SetTrigger("CallBackPack");
 		}
+		if (Input.GetKeyUp(KeyCode.R))
+		{
+			m_BackPack.GetComponent<BackPackScript>().ResetPickUps();
+		}
 
 		if (m_GameData.GetPlayerPrefsHealth() <= HEALTH_WARNING_LIMIT)
 		{

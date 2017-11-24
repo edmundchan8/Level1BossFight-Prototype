@@ -35,8 +35,6 @@ public class PlayerMove : MonoBehaviour
 			AnimFacingDown();
 		}
 
-		//TODO: Need to think how this will work.
-		//Move Player with WASD / UDLR
 		m_Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed);
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
