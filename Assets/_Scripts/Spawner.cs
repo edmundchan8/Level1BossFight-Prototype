@@ -15,7 +15,6 @@ public class Spawner : MonoBehaviour
 	void Update()
 	{
 		m_SpawnerTimer.Update(Time.deltaTime);
-		print(m_SpawnerTimer.HasCompleted());
 	}
 
 	void OnTriggerStay2D(Collider2D myCol)
