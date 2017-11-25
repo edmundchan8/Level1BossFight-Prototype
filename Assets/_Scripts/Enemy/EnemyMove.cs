@@ -66,7 +66,7 @@ public class EnemyMove : MonoBehaviour
 
 		if (m_Timer > MOVE_DURATION)
 		{
-			m_Timer = 0f;
+			StopEnemyMovement();
 		}
 	}
 
@@ -75,5 +75,10 @@ public class EnemyMove : MonoBehaviour
 		Vector3 enemyPos = new Vector3(transform.position.x, transform.position.y, 0f);
 		m_DirectionValue = (GameController.instance.ReturnPlayerPos() - enemyPos).normalized;
 		transform.position = new Vector3(enemyPos.x + (PUSH_BACK_AMOUNT * -m_DirectionValue.x), (enemyPos.y + (PUSH_BACK_AMOUNT * -m_DirectionValue.y)),0f);
+	}
+
+	public void StopEnemyMovement()
+	{
+		m_Timer = 0f;
 	}
 }

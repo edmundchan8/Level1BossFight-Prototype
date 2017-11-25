@@ -42,6 +42,9 @@ public class EnemyStats : MonoBehaviour
 
 	public int DealDamage()
 	{
+		//Everytime the enemy deals damage, it will stop moving
+		m_EnemyMove.StopEnemyMovement();
+		//Then return the m_EnemyAttack damage amount
 		return m_EnemyAttack;
 	}
 
