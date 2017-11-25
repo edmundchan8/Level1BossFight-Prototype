@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 	PlayerStats m_PlayerStats;
 	[SerializeField]
 	PlayerAttack m_PlayerAttack;
+	[SerializeField]
+	PlayerMove m_PlayerMove;
 
 	[Header("Save Data")]
 	[SerializeField]
@@ -58,6 +60,11 @@ public class GameController : MonoBehaviour
 	public Vector3 ReturnPlayerPos()
 	{
 		return new Vector3(m_Player.transform.localPosition.x, m_Player.transform.localPosition.y, 0f);
+	}
+
+	public PlayerMove ReturnPlayerMoveScript()
+	{
+		return m_PlayerMove;
 	}
 
 	public void OnPlayerHome()

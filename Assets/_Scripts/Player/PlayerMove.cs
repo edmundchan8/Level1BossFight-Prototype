@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour
 	int FACING_RIGHT = 1;
 	bool FACING_UP = false;
 
+	Vector2 m_FacingDirection = Vector2.right;
+
 	PlayerStats m_PlayerStats;
 	[SerializeField]
 	Animator m_PlayerAnimator;
@@ -39,18 +41,22 @@ public class PlayerMove : MonoBehaviour
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			transform.localScale = new Vector2(FACING_LEFT, transform.localScale.y);
+			m_FacingDirection = Vector2.left;
 		}
 		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.localScale = new Vector2(FACING_RIGHT, transform.localScale.y);
+			m_FacingDirection = Vector2.right;
 		}
 		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
 			FACING_UP = true;
+			m_FacingDirection = Vector2.up;
 		}
 		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 		{
 			FACING_UP = false;
+			m_FacingDirection = Vector2.down;
 		}
 		else if(m_Rigidbody2D.velocity.sqrMagnitude == 0)
 		{
@@ -87,5 +93,10 @@ public class PlayerMove : MonoBehaviour
 	{
 		m_PlayerAnimator.SetBool("IsWalking", true);
 		m_PlayerAnimator.SetBool("IsReverseWalking", false);
+	}
+
+	public Vector2 ReturnFacingDirection()
+	{
+		return m_FacingDirection;
 	}
 }

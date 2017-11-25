@@ -35,6 +35,7 @@ public class BackPackScript : MonoBehaviour
 	void Start()
 	{
 		m_GameData = GameController.instance.ReturnGameData();
+		SetTextIcons();
 	}
 
 	public void SetIcon(string icon, int amount)

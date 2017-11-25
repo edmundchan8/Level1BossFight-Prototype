@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 0039cd21daafc4e3ebd06f6fc5f27f3a
-timeCreated: 1511073306
+guid: e97b6c0efbfbb44ecbaeb9dbec8714d1
+timeCreated: 1511638563
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: TestDragonHeroWalking-64x64_0
-    21300002: TestDragonHeroWalking-64x64_1
-    21300004: TestDragonHeroWalking-64x64_2
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -43,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,49 +94,7 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: TestDragonHeroWalking-64x64_0
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 64
-        width: 52
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: TestDragonHeroWalking-64x64_1
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 64
-        width: 50
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: TestDragonHeroWalking-64x64_2
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 48
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
+    sprites: []
     outline: []
     physicsShape: []
   spritePackingTag: 
