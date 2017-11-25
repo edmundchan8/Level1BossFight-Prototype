@@ -6,11 +6,13 @@ public class EnemyStats : MonoBehaviour
 {
 	[Header("Stats")]
 	[SerializeField]
-	int HEALTH_AMOUNT;
+	int m_HealthAmount;
 	[SerializeField]
-	int ATTACK_DAMAGE;
+	int m_AttackDamage;
 	[SerializeField]
 	GameObject m_ItemDrop;
+
+	float CAN_DROP_VALUE = 0.75f;
 
 	int m_EnemyHealth;
 	int m_EnemyAttack;
@@ -26,8 +28,8 @@ public class EnemyStats : MonoBehaviour
 	{
 		m_Animator = GetComponent<Animator>();
 		m_BoxCollider2D = GetComponent<BoxCollider2D>();
-		m_EnemyHealth = HEALTH_AMOUNT;
-		m_EnemyAttack = ATTACK_DAMAGE;
+		m_EnemyHealth = m_HealthAmount;
+		m_EnemyAttack = m_AttackDamage;
 		m_EnemyMove = gameObject.GetComponent<EnemyMove>();
 	}
 
@@ -64,7 +66,11 @@ public class EnemyStats : MonoBehaviour
 
 	void DestroyEnemy()
 	{
-		Instantiate(m_ItemDrop, transform.localPosition, Quaternion.identity);
+		//Randomised the chance of a drop
+		if (Random.value > CAN_DROP_VALUE)
+		{
+			Instantiate(m_ItemDrop, transform.localPosition, Quaternion.identity);
+		}
 		Destroy(gameObject);
 	}
 
