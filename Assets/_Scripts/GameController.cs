@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
 	PlayerAttack m_PlayerAttack;
 	[SerializeField]
 	PlayerMove m_PlayerMove;
+	[SerializeField]
+	Flashing m_Flashing;
 
 	[Header("Save Data")]
 	[SerializeField]
@@ -85,5 +87,10 @@ public class GameController : MonoBehaviour
 	public BackPackScript ReturnBackPack()
 	{
 		return m_BackPack;
+	}
+
+	public Flashing ReturnFlashingScript()
+	{
+		return m_Flashing;
 	}
 }

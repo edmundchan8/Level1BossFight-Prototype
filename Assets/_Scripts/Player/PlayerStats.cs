@@ -17,6 +17,8 @@ public class PlayerStats : MonoBehaviour
 	int m_PlayerStrength = 10;
 	int m_PlayerDefence = 10;
 
+	bool m_PlayerDead;
+
 	[SerializeField]
 	GameObject m_BackPack;
 	Animator m_BackPackAnimator;
@@ -25,6 +27,7 @@ public class PlayerStats : MonoBehaviour
 
 	void Start()
 	{
+		m_PlayerDead = false;
 		m_BackPackAnimator = m_BackPack.GetComponent<Animator>();
 		m_PlayerHealth = MAX_HEALTH;
 		m_HealthImage.sizeDelta = new Vector2(m_PlayerHealth, HEALTH_IMAGE_HEIGHT);
@@ -64,7 +67,7 @@ public class PlayerStats : MonoBehaviour
 		m_PlayerHealth -= damageAmount;
 		if (m_PlayerHealth <= MIN_HEALTH)
 		{
-			PlayerDead();
+			m_PlayerDead = true;
 			m_PlayerHealth = MIN_HEALTH;
 		}
 		SetPlayerHealth();
@@ -91,9 +94,13 @@ public class PlayerStats : MonoBehaviour
 		return m_PlayerHealth;
 	}
 
-	public void PlayerDead()
+	public bool PlayerDead()
 	{
-		Debug.Log("Player dead");
+		if (m_PlayerDead)
+		{
+			Debug.Log("Player dead");
+		}
+		return m_PlayerDead;
 	}
 
 	public void IncreasePlayerStrength(int increaseStrength)
