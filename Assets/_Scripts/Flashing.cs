@@ -11,23 +11,27 @@ public class Flashing : MonoBehaviour
 	Timer m_FlashTimer = new Timer();
 	Timer m_SpriteFlashTimer = new Timer();
 	[SerializeField]
-	float m_FlashDuration = 2.5f;
+	float m_FlashDuration = 3f;
 	float SpriteFlashDuration = 0.5f;
 	[SerializeField]
 	bool m_FlashChildren;
+
+	bool m_IsFlashing;
 
 	void Start()
 	{
 		m_SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
+		print(m_FlashTimer.GetTime());
 		m_FlashTimer.Update(Time.deltaTime);
 		m_SpriteFlashTimer.Update(Time.deltaTime);
 
 		if(m_FlashTimer.Update(Time.deltaTime))
 		{
+			m_IsFlashing = false;
 			m_SpriteRenderer.enabled = true;
 			if (m_FlashChildren)
 			{
@@ -46,6 +50,10 @@ public class Flashing : MonoBehaviour
 				}
 				m_SpriteFlashTimer.Set(SpriteFlashDuration);
 			}
+		}
+		if (!m_FlashTimer.Update(Time.deltaTime))
+		{
+			m_IsFlashing = true;
 		}
 	}
 
@@ -66,5 +74,10 @@ public class Flashing : MonoBehaviour
 		{
 			FlashRecursion(obj, obj.GetComponent<SpriteRenderer>().enabled);
 		}
+	}
+
+	public bool ReturnIsFlashing()
+	{
+		return m_IsFlashing;
 	}
 }

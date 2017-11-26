@@ -63,11 +63,12 @@ public class PlayerMove : MonoBehaviour
 			m_PlayerAnimator.SetBool("IsWalking", false);
 			m_PlayerAnimator.SetBool("IsReverseWalking", false);
 		}
+		print(m_PlayerStats.ReturnInvulnerable());
 	}
 
 	void OnTriggerEnter2D(Collider2D myCol)
 	{
-		if (myCol.gameObject.tag == "Enemy" && !GameController.instance.ReturnPlayerAttackScript().PlayerAttacking())
+		if (myCol.gameObject.tag == "Enemy" && !GameController.instance.ReturnPlayerAttackScript().PlayerAttacking() && !m_PlayerStats.ReturnInvulnerable())
 		{
 			Vector2 enemyPos = new Vector2(myCol.gameObject.transform.position.x, myCol.gameObject.transform.position.y);
 			int enemyAttackDamage = myCol.gameObject.GetComponent<EnemyStats>().DealDamage();

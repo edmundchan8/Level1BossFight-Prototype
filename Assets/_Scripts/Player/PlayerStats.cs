@@ -19,6 +19,8 @@ public class PlayerStats : MonoBehaviour
 
 	bool m_PlayerDead;
 
+	bool m_Invulnerable;
+
 	[SerializeField]
 	GameObject m_BackPack;
 	Animator m_BackPackAnimator;
@@ -27,6 +29,7 @@ public class PlayerStats : MonoBehaviour
 
 	void Start()
 	{
+		m_Invulnerable = false;
 		m_PlayerDead = false;
 		m_BackPackAnimator = m_BackPack.GetComponent<Animator>();
 		m_PlayerHealth = MAX_HEALTH;
@@ -60,6 +63,7 @@ public class PlayerStats : MonoBehaviour
 		{
 			GameController.instance.ReturnWarningScript().DisableWarningPanel();
 		}
+		SetInvulnerable(GameController.instance.ReturnFlashingScript().ReturnIsFlashing());
 	}
 
 	public void OnPlayerHit(int damageAmount)
@@ -112,5 +116,15 @@ public class PlayerStats : MonoBehaviour
 	public void IncreasePlayerDefence(int increaseDefence)
 	{
 		m_PlayerDefence += increaseDefence;
+	}
+
+	public void SetInvulnerable(bool choice)
+	{
+		m_Invulnerable = choice;
+	}
+
+	public bool ReturnInvulnerable()
+	{
+		return m_Invulnerable;
 	}
 }
