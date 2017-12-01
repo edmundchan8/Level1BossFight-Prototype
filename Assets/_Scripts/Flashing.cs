@@ -25,7 +25,6 @@ public class Flashing : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		print(m_FlashTimer.GetTime());
 		m_FlashTimer.Update(Time.deltaTime);
 		m_SpriteFlashTimer.Update(Time.deltaTime);
 
@@ -46,7 +45,7 @@ public class Flashing : MonoBehaviour
 				m_SpriteRenderer.enabled = !m_SpriteRenderer.enabled;
 				if (m_FlashChildren)
 				{
-					FlashRecursion(this.gameObject, m_SpriteRenderer.enabled);
+					FlashRecursion(gameObject, m_SpriteRenderer.enabled);
 				}
 				m_SpriteFlashTimer.Set(SpriteFlashDuration);
 			}
@@ -66,13 +65,13 @@ public class Flashing : MonoBehaviour
 	//turn it off
 	void FlashRecursion(GameObject obj, bool flash)
 	{
-		if (this.gameObject.GetComponent<SpriteRenderer>())
+		if (obj.GetComponent<SpriteRenderer>())
 		{
-			this.gameObject.GetComponent<SpriteRenderer>().enabled = flash;
+			obj.GetComponent<SpriteRenderer>().enabled = flash;
 		}
 		foreach (Transform child in obj.transform)
 		{
-			FlashRecursion(obj, obj.GetComponent<SpriteRenderer>().enabled);
+			FlashRecursion(child.gameObject, flash);
 		}
 	}
 

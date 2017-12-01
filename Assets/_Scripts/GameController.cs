@@ -29,6 +29,9 @@ public class GameController : MonoBehaviour
 	[SerializeField]
 	BackPackScript m_BackPack;
 
+	[SerializeField]
+	FollowPlayer m_FollowPlayerScript;
+
 	public static GameController instance;
 
 	void Awake()
@@ -92,5 +95,10 @@ public class GameController : MonoBehaviour
 	public Flashing ReturnFlashingScript()
 	{
 		return m_Flashing;
+	}
+
+	public FollowPlayer ReturnFollowPlayer()
+	{
+		return m_FollowPlayerScript;
 	}
 }

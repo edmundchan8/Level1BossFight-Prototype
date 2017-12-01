@@ -6,7 +6,7 @@ public class PlayerTouch : MonoBehaviour
 {
 	public enum eTerrain
 	{
-		ground, home, grass, mountain, snow, desert
+		ground, home, grass, mountain, snow, desert, boss
 	};
 	private eTerrain eState = eTerrain.grass;
 
@@ -16,7 +16,6 @@ public class PlayerTouch : MonoBehaviour
 
 	void Update()
 	{
-		print(eState);
 		eTerrain currentState = eState;
 
 		switch(currentState)
@@ -51,6 +50,11 @@ public class PlayerTouch : MonoBehaviour
 					GameController.instance.OnPlayerHome();
 				}
 				break;
+			case eTerrain.boss:
+				{
+					GameController.instance.ReturnFollowPlayer().OnBossTile();
+				}
+				break;
 			default:
 				{
 					Debug.Log("You are not stepping on anything");
@@ -81,6 +85,10 @@ public class PlayerTouch : MonoBehaviour
 		{
 			eState = eTerrain.snow;
 		}
+		else if (myCol.gameObject.tag == "Boss")
+		{
+			eState = eTerrain.boss;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D myCol)
@@ -92,11 +100,5 @@ public class PlayerTouch : MonoBehaviour
 			pickUp.PickedUpDestroy();
 			GameController.instance.ReturnBackPack().SetIcon(pickUpName, ADD_ONE);
 		}
-	}
-
-	void OnTriggerExit2D()
-	{
-		eState = eTerrain.ground;
-		GameController.instance.OnPlayerLeftHome();
 	}
 }
