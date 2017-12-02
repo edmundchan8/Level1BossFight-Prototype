@@ -67,10 +67,12 @@
      <Compile Include="Assets\_Scripts\Player\PlayerMove.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerStats.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerTouch.cs" />
+     <Compile Include="Assets\_Scripts\Projectile.cs" />
+     <Compile Include="Assets\_Scripts\Shooter.cs" />
      <Compile Include="Assets\_Scripts\Spawner.cs" />
      <Compile Include="Assets\_Scripts\Timer.cs" />
      <Compile Include="Assets\_Scripts\Warning.cs" />
-     <Compile Include="Assets\Sprites\FadeIn.cs" />
+     <Compile Include="Assets\Animator\FadeIn.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
