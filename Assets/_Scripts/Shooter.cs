@@ -14,31 +14,44 @@ public class Shooter : MonoBehaviour
 	[SerializeField]
 	GameObject m_ProjectileHolder;
 
-	[SerializeField]
-	Timer m_ShooterTimer = new Timer();
 	float WAIT_DURATION = 3f;
 
 	[SerializeField]
-	bool m_ShotLimit;
+	bool m_ShotLimit = true;
+
+	[SerializeField]
+	bool m_PlayerWithinRange = false;
 
 	int m_ShotCounter;
+	[SerializeField]
+	int m_NumberShots;
 
 	Vector2 m_TargetPos; 
+
+	Timer m_ShootTimer = new Timer();
 
 	//Call shooting script, or more like, if we are able to shoot, begin the shooting protocol, the shooting method
 		//note, reset the m_ShotLimit.
 		//Set the timer.
 	void Update()
 	{
-		//Test
-		if(Input.GetKeyUp(KeyCode.Z))
+		//FOR DEBUG TESTING ONLY
+		/*if(Input.GetKeyUp(KeyCode.Z))
 		{
-			SetShotLimit(3);
-		}
+			m_PlayerWithinRange = !m_PlayerWithinRange;
+			m_ShotLimit = !m_ShotLimit;
+		}*/
 
-		if (m_ShotCounter > 0 && m_ShooterTimer.Update(Time.deltaTime))
+		if ((m_ShotCounter > 0 && m_PlayerWithinRange) && m_ShootTimer.Update(Time.deltaTime))
 		{
 			Shoot();
+			m_ShootTimer.Set(WAIT_DURATION);
+		}
+		else if ((!m_ShotLimit && m_PlayerWithinRange) && m_ShootTimer.Update(Time.deltaTime))
+		{
+			SetShotLimit(1);
+			Shoot();
+			m_ShootTimer.Set(WAIT_DURATION);
 		}
 	}
 	//First, Follow the target position, keep a track of the targets position
@@ -57,18 +70,10 @@ public class Shooter : MonoBehaviour
 
 	void Shoot()
 	{
-		if (m_ShotCounter > 0)
-		{
-			GameObject projectile = Instantiate(m_Projectile, m_Head.transform.position, Quaternion.identity, m_ProjectileHolder.gameObject.transform) as GameObject;
-			//Get access to the projectile script to tell is where you want to fire the projectile
-			projectile.GetComponent<Projectile>().SetProjectileDirection(CurrentPosition(), TargetPosition());
-			m_ShooterTimer.Set(WAIT_DURATION);
-			m_ShotCounter--;
-		}
-		else
-		{
-			Debug.Log("Shooter script, Shoot(), m_ShotLimit is below 0, we should not see this.");
-		}
+		GameObject projectile = Instantiate(m_Projectile, m_Head.transform.position, Quaternion.identity, m_ProjectileHolder.gameObject.transform) as GameObject;
+		//Get access to the projectile script to tell is where you want to fire the projectile
+		projectile.GetComponent<Projectile>().SetProjectileDirection(CurrentPosition(), TargetPosition());
+		m_ShotCounter--;
 	}
 
 	public void SetShotLimit(int limit)

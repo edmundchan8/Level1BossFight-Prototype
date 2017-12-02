@@ -16,8 +16,7 @@ public class Projectile : MonoBehaviour
 
 	public void SetProjectileDirection(Vector2 currentPos, Vector2 endPos)
 	{
-		print(currentPos);
-		m_Direction = (endPos - currentPos);
+		m_Direction = (endPos - currentPos).normalized;
 	}
 
 	void Update()
