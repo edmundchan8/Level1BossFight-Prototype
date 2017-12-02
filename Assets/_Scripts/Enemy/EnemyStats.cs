@@ -23,6 +23,10 @@ public class EnemyStats : MonoBehaviour
 	EnemyMove m_EnemyMove;
 	Animator m_Animator;
 	BoxCollider2D m_BoxCollider2D;
+	[SerializeField]
+	GameObject m_HealthBar;
+	[SerializeField]
+	GameObject m_HealthBarBackGround;
 
 	void Start()
 	{
@@ -53,6 +57,12 @@ public class EnemyStats : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		m_EnemyHealth -= damage;
+		GameObject enemyHealthbar = m_HealthBar;
+		Vector3 localScale = enemyHealthbar.transform.localScale;
+		float xValue = (float)m_EnemyHealth / (float)m_HealthAmount;
+		localScale.x = xValue;
+		enemyHealthbar.transform.localScale = localScale;
+		m_HealthBar = enemyHealthbar;
 		m_EnemyMove.EnemyPushBack();
 	}
 
@@ -60,6 +70,7 @@ public class EnemyStats : MonoBehaviour
 	{
 		m_IsDead = true;
 		DisableBoxCollider2D();
+		DisableHealthBarBackGround();
 		m_Animator.SetBool("IsDead", true);
 		Invoke("DestroyEnemy", DEATH_DURATION);
 	}
@@ -82,5 +93,10 @@ public class EnemyStats : MonoBehaviour
 	public bool IsEnemyDead()
 	{
 		return m_IsDead;
+	}
+
+	void DisableHealthBarBackGround()
+	{
+		m_HealthBarBackGround.SetActive(false);
 	}
 }
