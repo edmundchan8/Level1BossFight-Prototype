@@ -33,8 +33,6 @@ public class FollowPlayer : MonoBehaviour
 		if (!m_ZoomTimer.Update(Time.deltaTime))
 		{
 			m_Camera.orthographicSize = Mathf.Lerp(m_Camera.orthographicSize, m_OrthoViewSize, 0.2f);
-			print(m_Camera.orthographicSize);
-			print(m_OrthoViewSize);
 		}
 
 	}
