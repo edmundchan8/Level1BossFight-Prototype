@@ -13,12 +13,13 @@ public class PlayerAttack : MonoBehaviour
 
 	Vector2 m_SlashUpVector = new Vector2(0, 0.75f);
 	Vector2 m_SlashDownVector = new Vector2(0, -0.75f);
-	Vector2 m_SlashHorizontalVector = new Vector2(0.5f, 0);
+	Vector2 m_SlashLeftVector = new Vector2(0.5f, 0);
+	Vector2 m_SlashRightVector = new Vector2(-0.5f, 0);
 
 	Quaternion m_SlashUpRot = Quaternion.Euler (0,0,90);
 	Quaternion m_SlashDownRot = Quaternion.Euler(0,0,270);
-	Quaternion m_SlashHorizontalRot = Quaternion.Euler(0,0,0);
-
+	Quaternion m_SlashLeftRot = Quaternion.Euler(0,0,0);
+	Quaternion m_SlashRightRot = Quaternion.Euler(0,0,180);
 
 	GameData m_GameData;
 
@@ -73,11 +74,16 @@ public class PlayerAttack : MonoBehaviour
 			SetSlashPos(m_SlashDownVector);
 			SetSlashRot(m_SlashDownRot);
 		}
-		else
+		else if (direction == Vector2.left)
 		{
 			m_PlayerAttackAnimator.SetTrigger("IsAttackHorizontal");
-			SetSlashPos(m_SlashHorizontalVector);
-			SetSlashRot(m_SlashHorizontalRot);
+			SetSlashPos(m_SlashLeftVector);
+			SetSlashRot(m_SlashLeftRot);
+		}
+		else
+		{
+			SetSlashPos(m_SlashRightVector);
+			SetSlashRot(m_SlashRightRot);
 		}
 	}
 

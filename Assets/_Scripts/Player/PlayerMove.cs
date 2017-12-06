@@ -8,13 +8,14 @@ public class PlayerMove : MonoBehaviour
 	float m_PlayerSpeed;
 	[SerializeField]
 	float KNOCK_BACK_AMOUNT;
-	int FACING_LEFT = -1;
-	int FACING_RIGHT = 1;
+
+	bool FACING_RIGHT = true;
 	bool FACING_UP = false;
 
 	Vector2 m_FacingDirection = Vector2.right;
 
 	PlayerStats m_PlayerStats;
+
 	[SerializeField]
 	Animator m_PlayerAnimator;
 
@@ -22,48 +23,35 @@ public class PlayerMove : MonoBehaviour
 
 	void Start()
 	{
+		m_PlayerAnimator.SetBool("IsFacingRight", FACING_RIGHT);
 		m_PlayerStats = GameController.instance.ReturnPlayerStats();
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 	void FixedUpdate () 
 	{
-		if (FACING_UP)
-		{
-			AnimFacingUp();
-		}
-		else
-		{
-			AnimFacingDown();
-		}
-
+		m_PlayerAnimator.SetFloat("Movement", Input.GetAxis("Horizontal"));
 		m_Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed);
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
-			transform.localScale = new Vector2(FACING_LEFT, transform.localScale.y);
-			m_FacingDirection = Vector2.left;
+			FACING_RIGHT = false;
+			m_PlayerAnimator.SetBool("IsFacingRight", FACING_RIGHT);
+			m_FacingDirection = Vector2.right;
 		}
 		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
-			transform.localScale = new Vector2(FACING_RIGHT, transform.localScale.y);
-			m_FacingDirection = Vector2.right;
+			FACING_RIGHT = true;
+			m_PlayerAnimator.SetBool("IsFacingRight", FACING_RIGHT);
+			m_FacingDirection = Vector2.left;
 		}
 		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
-			FACING_UP = true;
 			m_FacingDirection = Vector2.up;
 		}
 		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 		{
-			FACING_UP = false;
 			m_FacingDirection = Vector2.down;
 		}
-		else if(m_Rigidbody2D.velocity.sqrMagnitude == 0)
-		{
-			m_PlayerAnimator.SetBool("IsWalking", false);
-			m_PlayerAnimator.SetBool("IsReverseWalking", false);
-		}
-		print(m_PlayerStats.ReturnInvulnerable());
 	}
 
 	void OnTriggerEnter2D(Collider2D myCol)
@@ -84,18 +72,6 @@ public class PlayerMove : MonoBehaviour
 		Vector2 knockBackDirection = (enemyPos - playerPos).normalized;
 		transform.position = new Vector2 (playerPos.x + (KNOCK_BACK_AMOUNT * -knockBackDirection.x), playerPos.y + (KNOCK_BACK_AMOUNT * knockBackDirection.y));
 		m_PlayerStats.OnPlayerHit(damage);
-	}
-
-	void AnimFacingUp()
-	{
-		m_PlayerAnimator.SetBool("IsWalking", false);
-		m_PlayerAnimator.SetBool("IsReverseWalking", true);
-	}
-
-	void AnimFacingDown()
-	{
-		m_PlayerAnimator.SetBool("IsWalking", true);
-		m_PlayerAnimator.SetBool("IsReverseWalking", false);
 	}
 
 	public Vector2 ReturnFacingDirection()
