@@ -36,11 +36,13 @@ public class PlayerMove : MonoBehaviour
 		{
 			float x = -1;
 			transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+			m_FacingDirection = Vector2.left;
 		}
 		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
 			float x = 1;
 			transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+			m_FacingDirection = Vector2.right;
 		}
 		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{

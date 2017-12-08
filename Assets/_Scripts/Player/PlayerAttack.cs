@@ -14,6 +14,15 @@ public class PlayerAttack : MonoBehaviour
 	Timer m_SlashTimer = new Timer();
 	float SLASH_DURATION = 0.15f;
 
+	Vector3 SLASH_UP = new Vector3(0, 0.75f, 0);
+	Quaternion SLASH_ROT_UP = Quaternion.Euler (0,0,90);
+
+	Vector3 SLASH_DOWN = new Vector3(0,-0.75f,0);
+	Quaternion SLASH_ROT_DOWN = Quaternion.Euler(0, 0, 270);
+
+	Vector3 SLASH_FORWARD = new Vector3(0.5f, 0, 0);
+	Quaternion SLASH_ROT_FORWARD = Quaternion.Euler(0, 0, 0);
+
 	GameData m_GameData;
 
 	void Start()
@@ -55,7 +64,22 @@ public class PlayerAttack : MonoBehaviour
 
 	void SetAttackingAnimDirection()
 	{
-		//Vector2 direction = GameController.instance.ReturnPlayerMoveScript().ReturnFacingDirection();
-		m_PlayerAttackAnimator.SetTrigger("IsAttackHorizontal");
+		Vector2 direction = GameController.instance.ReturnPlayerMoveScript().ReturnFacingDirection();
+		if (direction == Vector2.up)
+		{
+			transform.localPosition = SLASH_UP;
+			transform.localRotation = SLASH_ROT_UP;
+		}
+		else if (direction == Vector2.down)
+		{
+			transform.localPosition = SLASH_DOWN;
+			transform.localRotation = SLASH_ROT_DOWN;
+		}
+		else
+		{
+			transform.localPosition = SLASH_FORWARD;
+			transform.localRotation = SLASH_ROT_FORWARD;
+			m_PlayerAttackAnimator.SetTrigger("IsAttackHorizontal");
+		}
 	}
 }
