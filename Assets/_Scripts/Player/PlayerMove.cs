@@ -34,15 +34,13 @@ public class PlayerMove : MonoBehaviour
 		m_Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed);
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
-			FACING_RIGHT = false;
-			m_PlayerAnimator.SetBool("IsFacingRight", FACING_RIGHT);
-			m_FacingDirection = Vector2.right;
+			float x = -1;
+			transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 		}
 		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
-			FACING_RIGHT = true;
-			m_PlayerAnimator.SetBool("IsFacingRight", FACING_RIGHT);
-			m_FacingDirection = Vector2.left;
+			float x = 1;
+			transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 		}
 		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{

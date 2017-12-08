@@ -11,15 +11,8 @@ public class PlayerAttack : MonoBehaviour
 	[SerializeField]
 	Animator m_PlayerAttackAnimator;
 
-	Vector2 m_SlashUpVector = new Vector2(0, 0.75f);
-	Vector2 m_SlashDownVector = new Vector2(0, -0.75f);
-	Vector2 m_SlashLeftVector = new Vector2(0.5f, 0);
-	Vector2 m_SlashRightVector = new Vector2(-0.5f, 0);
-
-	Quaternion m_SlashUpRot = Quaternion.Euler (0,0,90);
-	Quaternion m_SlashDownRot = Quaternion.Euler(0,0,270);
-	Quaternion m_SlashLeftRot = Quaternion.Euler(0,0,0);
-	Quaternion m_SlashRightRot = Quaternion.Euler(0,0,180);
+	Timer m_SlashTimer = new Timer();
+	float SLASH_DURATION = 0.15f;
 
 	GameData m_GameData;
 
@@ -36,8 +29,10 @@ public class PlayerAttack : MonoBehaviour
 			SetAttackingAnimDirection();
 			m_Attack.enabled = true;
 			m_AttackCollider.enabled = true;
+			m_SlashTimer.Set(SLASH_DURATION);
 		}
-		else
+
+		if(m_SlashTimer.Update(Time.deltaTime))
 		{
 			m_Attack.enabled = false;
 			m_AttackCollider.enabled = false;
@@ -60,41 +55,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void SetAttackingAnimDirection()
 	{
-		Vector2 direction = GameController.instance.ReturnPlayerMoveScript().ReturnFacingDirection();
-
-		if (direction == Vector2.up)
-		{
-			m_PlayerAttackAnimator.SetTrigger("IsAttackUp");
-			SetSlashPos(m_SlashUpVector);
-			SetSlashRot(m_SlashUpRot);
-		}
-		else if (direction == Vector2.down)
-		{
-			m_PlayerAttackAnimator.SetTrigger("IsAttackDown");
-			SetSlashPos(m_SlashDownVector);
-			SetSlashRot(m_SlashDownRot);
-		}
-		else if (direction == Vector2.left)
-		{
-			m_PlayerAttackAnimator.SetTrigger("IsAttackHorizontal");
-			SetSlashPos(m_SlashLeftVector);
-			SetSlashRot(m_SlashLeftRot);
-		}
-		else
-		{
-			SetSlashPos(m_SlashRightVector);
-			SetSlashRot(m_SlashRightRot);
-		}
+		//Vector2 direction = GameController.instance.ReturnPlayerMoveScript().ReturnFacingDirection();
+		m_PlayerAttackAnimator.SetTrigger("IsAttackHorizontal");
 	}
-
-	Vector2 SetSlashPos(Vector2 pos)
-	{
-		return transform.localPosition = pos;
-	}
-
-	Quaternion SetSlashRot(Quaternion rot)
-	{
-		return transform.localRotation = rot;
-	}
-
 }
