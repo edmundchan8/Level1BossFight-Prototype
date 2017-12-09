@@ -30,7 +30,8 @@ public class PlayerMove : MonoBehaviour
 
 	void FixedUpdate () 
 	{
-		m_PlayerAnimator.SetFloat("Movement", Input.GetAxis("Horizontal"));
+		float movement = Input.GetAxis("Horizontal");
+		m_PlayerAnimator.SetFloat("Movement", movement);
 		m_Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed);
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
