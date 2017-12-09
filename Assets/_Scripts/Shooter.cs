@@ -33,11 +33,20 @@ public class Shooter : MonoBehaviour
 		{
 			Shoot();
 			m_ShootTimer.Set(WAIT_DURATION);
-			if(m_ShotCounter <= 0)
+			if (m_ShotCounter <= 0)
 			{
 				GameController.instance.ReturnBossDetect().SetAttacking(true);
 			}
 		}
+
+		//TODO: So this code is so that, if you out this script onto an enemy that will be focused on just shooting at the player, 
+		//and when the player is within close proximity of the player then this script will just cause the enemy to keep shooting at the player
+		else if ((!m_ShotLimit) && m_ShootTimer.Update(Time.deltaTime) /* && m_PlayerWithinRange */)
+		{
+			SetShotLimit(1);
+			Shoot();
+			m_ShootTimer.Set(WAIT_DURATION);
+		}	
 	}
 	//First, Follow the target position, keep a track of the targets position
 	Vector2 TargetPosition()

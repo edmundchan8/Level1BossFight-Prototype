@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
 	BossDetect m_BossDetect;
 	[SerializeField]
 	ChargeAttack m_BossChargeAttack;
+	[SerializeField]
+	AOEAttack m_BossAOEAttack;
 
 	[Header("Save Data")]
 	[SerializeField]
@@ -144,5 +146,10 @@ public class GameController : MonoBehaviour
 	public ChargeAttack ReturnBossChargeAttack()
 	{
 		return m_BossChargeAttack;
+	}
+
+	public AOEAttack ReturnAOEAttack()
+	{
+		return m_BossAOEAttack;
 	}
 }
