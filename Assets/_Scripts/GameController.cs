@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
 	[SerializeField]
 	GameObject m_Player;
 	[SerializeField]
+	GameObject m_Boss;
+	[SerializeField]
 	PlayerStats m_PlayerStats;
 	[SerializeField]
 	PlayerAttack m_PlayerAttack;
@@ -18,6 +20,12 @@ public class GameController : MonoBehaviour
 	PlayerTouch m_PlayerTouch;
 	[SerializeField]
 	Flashing m_Flashing;
+	[SerializeField]
+	Shooter m_BossShooter;
+	[SerializeField]
+	EnemyStats m_BossStats;
+	[SerializeField]
+	BossDetect m_BossDetect;
 
 	[Header("Save Data")]
 	[SerializeField]
@@ -107,5 +115,20 @@ public class GameController : MonoBehaviour
 	public int GetTerrainState()
 	{
 		return m_PlayerTouch.ReturnTerrainState();
+	}
+
+	public Shooter ReturnBossShooter()
+	{
+		return m_BossShooter;
+	}
+
+	public EnemyStats ReturnBossStats()
+	{
+		return m_BossStats;
+	}
+
+	public BossDetect ReturnBossDetect()
+	{
+		return m_BossDetect;
 	}
 }

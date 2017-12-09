@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,16 +22,20 @@ public class EnemyStats : MonoBehaviour
 	[Header ("Accessor")]
 	EnemyMove m_EnemyMove;
 	Animator m_Animator;
-	BoxCollider2D m_BoxCollider2D;
+	CircleCollider2D m_CircleCollider2D;
 	[SerializeField]
 	GameObject m_HealthBar;
 	[SerializeField]
 	GameObject m_HealthBarBackGround;
 
+	[Header ("Shooter")]
+	[SerializeField]
+	int m_Shots;
+
 	void Start()
 	{
 		m_Animator = GetComponent<Animator>();
-		m_BoxCollider2D = GetComponent<BoxCollider2D>();
+		m_CircleCollider2D = GetComponent<CircleCollider2D>();
 		m_EnemyHealth = m_HealthAmount;
 		m_EnemyAttack = m_AttackDamage;
 		m_EnemyMove = gameObject.GetComponent<EnemyMove>();
@@ -69,7 +73,7 @@ public class EnemyStats : MonoBehaviour
 	void EnemyDies()
 	{
 		m_IsDead = true;
-		DisableBoxCollider2D();
+		DisableCollider2D();
 		DisableHealthBarBackGround();
 		m_Animator.SetBool("IsDead", true);
 		Invoke("DestroyEnemy", DEATH_DURATION);
@@ -85,9 +89,9 @@ public class EnemyStats : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	void DisableBoxCollider2D()
+	void DisableCollider2D()
 	{
-		m_BoxCollider2D.enabled = false;
+		m_CircleCollider2D.enabled = false;
 	}
 
 	public bool IsEnemyDead()
@@ -98,5 +102,10 @@ public class EnemyStats : MonoBehaviour
 	void DisableHealthBarBackGround()
 	{
 		m_HealthBarBackGround.SetActive(false);
+	}
+
+	public int GetShots()
+	{
+		return m_Shots;
 	}
 }
