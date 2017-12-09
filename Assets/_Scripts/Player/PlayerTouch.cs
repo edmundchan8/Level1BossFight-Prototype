@@ -101,4 +101,9 @@ public class PlayerTouch : MonoBehaviour
 			GameController.instance.ReturnBackPack().SetIcon(pickUpName, ADD_ONE);
 		}
 	}
+
+	public int ReturnTerrainState()
+	{
+		return (int)eState;
+	}
 }

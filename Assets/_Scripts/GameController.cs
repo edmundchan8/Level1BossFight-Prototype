@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
 	[SerializeField]
 	PlayerMove m_PlayerMove;
 	[SerializeField]
+	PlayerTouch m_PlayerTouch;
+	[SerializeField]
 	Flashing m_Flashing;
 
 	[Header("Save Data")]
@@ -100,5 +102,10 @@ public class GameController : MonoBehaviour
 	public FollowPlayer ReturnFollowPlayer()
 	{
 		return m_FollowPlayerScript;
+	}
+
+	public int GetTerrainState()
+	{
+		return m_PlayerTouch.ReturnTerrainState();
 	}
 }

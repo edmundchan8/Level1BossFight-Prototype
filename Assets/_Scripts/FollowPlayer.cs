@@ -19,6 +19,8 @@ public class FollowPlayer : MonoBehaviour
 
 	void Start()
 	{
+		Vector3 playerPos = GameController.instance.ReturnPlayerPos();
+		transform.position = new Vector3(playerPos.x, playerPos.y, transform.position.z);
 		m_Offset = transform.position - GameController.instance.ReturnPlayerPos();
 		m_Camera = GetComponent<Camera>();
 	}
