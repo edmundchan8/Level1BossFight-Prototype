@@ -6,32 +6,38 @@ public class BossDetect : MonoBehaviour
 {
 	int BOSS_TERRAIN_ESTATE = 6;
 
-	float FIRE_ATTACK_DISTANCE = 90f;
-	float CHARGE_DISTANCE = 55f;
-	float CLOSE_DISTANCE = 0.5f;
+	float FIRE_ATTACK_DISTANCE = 140f;
+	float CHARGE_DISTANCE = 75f;
+	float CLOSE_DISTANCE = 5f;
 
-	bool IsAttacking = false;
+	bool IsAttacking = true;
+
+	void Update()
+	{
+
+	}
 
 	void OnTriggerStay2D(Collider2D myCol)
 	{
 		if (myCol.gameObject.tag == "Player" && GameController.instance.GetTerrainState() == BOSS_TERRAIN_ESTATE)
 		{
-			if ((DistanceFromPlayer() > FIRE_ATTACK_DISTANCE) && !IsAttacking)
+			if ((DistanceFromPlayer() > FIRE_ATTACK_DISTANCE) && IsAttacking)
 			{
 				Debug.Log("Fireball attack");
+				SetAttacking(false);
 				int shots = GameController.instance.ReturnBossStats().GetShots();
 				GameController.instance.ReturnBossShooter().SetShotLimit(shots);
-				IsAttacking = true;
 			}
-			else if (DistanceFromPlayer() > CHARGE_DISTANCE)
+			else if ((DistanceFromPlayer() > CHARGE_DISTANCE) && (DistanceFromPlayer() < FIRE_ATTACK_DISTANCE) && IsAttacking)
 			{
 				Debug.Log("Charge Attack");
-				IsAttacking = true;
+				SetAttacking(false);
+				GameController.instance.ReturnBossChargeAttack().StartChargeAttack();
 			}
-			else if (DistanceFromPlayer() > CLOSE_DISTANCE)
+			else if (DistanceFromPlayer() < CLOSE_DISTANCE && IsAttacking)
 			{
 				Debug.Log("AOE attack");
-				IsAttacking = true;
+				SetAttacking(false);
 			}
 		}
 	}
@@ -43,9 +49,9 @@ public class BossDetect : MonoBehaviour
 		return distance;
 	}
 
-	public void SetAttackingFalse()
+	public bool SetAttacking(bool choice)
 	{
-		IsAttacking = false;
-		Debug.Log("Attack stopped");
+		IsAttacking = choice;
+		return IsAttacking;
 	}
 }

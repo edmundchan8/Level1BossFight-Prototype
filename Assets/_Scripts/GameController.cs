@@ -9,8 +9,6 @@ public class GameController : MonoBehaviour
 	[SerializeField]
 	GameObject m_Player;
 	[SerializeField]
-	GameObject m_Boss;
-	[SerializeField]
 	PlayerStats m_PlayerStats;
 	[SerializeField]
 	PlayerAttack m_PlayerAttack;
@@ -19,13 +17,19 @@ public class GameController : MonoBehaviour
 	[SerializeField]
 	PlayerTouch m_PlayerTouch;
 	[SerializeField]
-	Flashing m_Flashing;
+	Flashing m_PlayerFlashing;
+
+	[Header ("Boss")]
+	[SerializeField]
+	GameObject m_Boss;
 	[SerializeField]
 	Shooter m_BossShooter;
 	[SerializeField]
 	EnemyStats m_BossStats;
 	[SerializeField]
 	BossDetect m_BossDetect;
+	[SerializeField]
+	ChargeAttack m_BossChargeAttack;
 
 	[Header("Save Data")]
 	[SerializeField]
@@ -57,6 +61,11 @@ public class GameController : MonoBehaviour
 		}
 	}
 		
+	void Update()
+	{
+
+	}
+
 	public GameData ReturnGameData()
 	{
 		return m_GameData;
@@ -102,9 +111,9 @@ public class GameController : MonoBehaviour
 		return m_BackPack;
 	}
 
-	public Flashing ReturnFlashingScript()
+	public Flashing ReturnPlayerFlashingScript()
 	{
-		return m_Flashing;
+		return m_PlayerFlashing;
 	}
 
 	public FollowPlayer ReturnFollowPlayer()
@@ -130,5 +139,10 @@ public class GameController : MonoBehaviour
 	public BossDetect ReturnBossDetect()
 	{
 		return m_BossDetect;
+	}
+
+	public ChargeAttack ReturnBossChargeAttack()
+	{
+		return m_BossChargeAttack;
 	}
 }

@@ -33,10 +33,10 @@ public class Shooter : MonoBehaviour
 		{
 			Shoot();
 			m_ShootTimer.Set(WAIT_DURATION);
-		}
-		else if(m_ShotCounter <= 0)
-		{
-			GameController.instance.ReturnBossDetect().SetAttackingFalse();
+			if(m_ShotCounter <= 0)
+			{
+				GameController.instance.ReturnBossDetect().SetAttacking(true);
+			}
 		}
 	}
 	//First, Follow the target position, keep a track of the targets position

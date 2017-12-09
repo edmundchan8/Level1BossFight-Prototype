@@ -21,7 +21,6 @@ public class Projectile : MonoBehaviour
 
 	void Update()
 	{
-
 		transform.Translate(m_Direction * m_Speed);
 	}
 }

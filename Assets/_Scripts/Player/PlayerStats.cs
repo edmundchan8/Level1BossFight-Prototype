@@ -63,7 +63,7 @@ public class PlayerStats : MonoBehaviour
 		{
 			GameController.instance.ReturnWarningScript().DisableWarningPanel();
 		}
-		SetInvulnerable(GameController.instance.ReturnFlashingScript().ReturnIsFlashing());
+		SetInvulnerable(GameController.instance.ReturnPlayerFlashingScript().ReturnIsFlashing());
 	}
 
 	public void OnPlayerHit(int damageAmount)

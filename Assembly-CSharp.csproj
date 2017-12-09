@@ -54,6 +54,7 @@
      <Compile Include="Assets\_Scripts\BackPackScript.cs" />
      <Compile Include="Assets\_Scripts\BossDetect.cs" />
      <Compile Include="Assets\_Scripts\BossTile.cs" />
+     <Compile Include="Assets\_Scripts\ChargeAttack.cs" />
      <Compile Include="Assets\_Scripts\Enemy\EnemyMove.cs" />
      <Compile Include="Assets\_Scripts\Enemy\EnemyStats.cs" />
      <Compile Include="Assets\_Scripts\Flashing.cs" />
