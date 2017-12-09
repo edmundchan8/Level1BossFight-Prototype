@@ -6,42 +6,42 @@ public class BossDetect : MonoBehaviour
 {
 	int BOSS_TERRAIN_ESTATE = 6;
 
-	float FIRE_ATTACK_DISTANCE = 150f;
-	float CHARGE_DISTANCE = 75f;
+	float FIRE_ATTACK_DISTANCE = 170f;
+	float CHARGE_DISTANCE = 115f;
 	float CLOSE_DISTANCE = 20f;
 
-	bool IsAttacking = true;
+	bool m_IsAttacking = true;
 
-	void Update()
+	int m_AttacksBeforeDazed;
+
+	void Start()
 	{
-
+		m_AttacksBeforeDazed = GameController.instance.ReturnBossStats().ReturnBossAttacksBeforeDazed();
 	}
 
 	void OnTriggerStay2D(Collider2D myCol)
 	{
-		if (myCol.gameObject.tag == "Player" && GameController.instance.GetTerrainState() == BOSS_TERRAIN_ESTATE)
+		if (myCol.gameObject.tag == "Player" && GameController.instance.GetTerrainState() == BOSS_TERRAIN_ESTATE && !GameController.instance.ReturnBossDaze().GetDazed())
 		{
-			//if ((!bossDazed())
-			if ((DistanceFromPlayer() > CHARGE_DISTANCE) && (DistanceFromPlayer() < FIRE_ATTACK_DISTANCE) && IsAttacking)
+			if ((DistanceFromPlayer() > CHARGE_DISTANCE) && (DistanceFromPlayer() < FIRE_ATTACK_DISTANCE) && m_IsAttacking)
 			{
 				Debug.Log("Fireball attack");
-				SetAttacking(false);
+				Attacking();
 				int shots = GameController.instance.ReturnBossStats().GetShots();
 				GameController.instance.ReturnBossShooter().SetShotLimit(shots);
 			}
-			else if ((DistanceFromPlayer() > CLOSE_DISTANCE) && (DistanceFromPlayer() < CHARGE_DISTANCE) && IsAttacking)
+			else if ((DistanceFromPlayer() > CLOSE_DISTANCE) && (DistanceFromPlayer() < CHARGE_DISTANCE) && m_IsAttacking)
 			{
 				Debug.Log("Charge Attack");
-				SetAttacking(false);
+				Attacking();
 				GameController.instance.ReturnBossChargeAttack().StartChargeAttack();
 			}
-			else if ((DistanceFromPlayer() < CLOSE_DISTANCE) && IsAttacking)
+			else if ((DistanceFromPlayer() < CLOSE_DISTANCE) && m_IsAttacking)
 			{
 				Debug.Log("AOE attack");
-				SetAttacking(false);
+				Attacking();
 				GameController.instance.ReturnAOEAttack().StartCharging();
 			}
-			//else run bossDazed(), boss is succeptible for damage
 		}
 	}
 
@@ -52,9 +52,19 @@ public class BossDetect : MonoBehaviour
 		return distance;
 	}
 
+	void Attacking()
+	{
+		m_AttacksBeforeDazed--;
+		SetAttacking(false);
+		if (m_AttacksBeforeDazed <= 0)
+		{
+			GameController.instance.ReturnBossDaze().SetDazed(true);
+		}
+	}
+
 	public bool SetAttacking(bool choice)
 	{
-		IsAttacking = choice;
-		return IsAttacking;
+		m_IsAttacking = choice;
+		return m_IsAttacking;
 	}
 }

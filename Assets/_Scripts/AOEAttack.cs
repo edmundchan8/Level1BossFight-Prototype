@@ -19,7 +19,6 @@ public class AOEAttack : MonoBehaviour
 	{
 		if(m_ChargeTimer.Update(Time.deltaTime) && m_CanAttack)
 		{
-			print("triggered");
 			m_BossAnimator.SetTrigger("TailWhip");
 			m_CanAttack = false;
 		}

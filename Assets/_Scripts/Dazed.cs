@@ -4,14 +4,36 @@ using UnityEngine;
 
 public class Dazed : MonoBehaviour 
 {
+	bool m_Dazed;
 
-	// Use this for initialization
-	void Start () {
-		
+	[SerializeField]
+	float DazedTime;
+
+	//Set Dazed to be true
+	public void SetDazed(bool choice)
+	{
+		m_Dazed = choice;
+		if (m_Dazed)
+		{
+			//BossAnmation.SetTrigger("Dazed");
+			Debug.Log("Dazed");
+			StartCoroutine("SetDazedOff");
+		}
+		else
+		{
+			return;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public bool GetDazed()
+	{
+		return m_Dazed;
+	}
+
+	IEnumerator SetDazedOff()
+	{
+		yield return new WaitForSeconds(DazedTime);
+		SetDazed(false);
+		Debug.Log("Not Dazed");
 	}
 }

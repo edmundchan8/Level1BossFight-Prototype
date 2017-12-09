@@ -31,16 +31,10 @@ public class ChargeAttack : MonoBehaviour
 			Vector2 endPos = new Vector2(GameController.instance.ReturnPlayerPos().x, GameController.instance.ReturnPlayerPos().y);
 			SetProjectileDirection(currentPos, endPos);
 			m_MoveTimer.Set(m_MoveDuration);
-			if (m_ChargeAttempts <= 0 /* && !BossIsDazed()*/ )
+			if (m_ChargeAttempts <= 0)
 			{
 				GameController.instance.ReturnBossDetect().SetAttacking(true);
 			}
-			/*
-			 else 
-			 {
-			 	//Boss is Dazed, run script where boss cannot go back into attacking mode, boss is vulnerable
-			 }
-			*/
 		}
 
 		if (!m_MoveTimer.Update(Time.deltaTime))

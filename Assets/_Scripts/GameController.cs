@@ -32,6 +32,8 @@ public class GameController : MonoBehaviour
 	ChargeAttack m_BossChargeAttack;
 	[SerializeField]
 	AOEAttack m_BossAOEAttack;
+	[SerializeField]
+	Dazed m_BossDaze;
 
 	[Header("Save Data")]
 	[SerializeField]
@@ -151,5 +153,10 @@ public class GameController : MonoBehaviour
 	public AOEAttack ReturnAOEAttack()
 	{
 		return m_BossAOEAttack;
+	}
+
+	public Dazed ReturnBossDaze()
+	{
+		return m_BossDaze;
 	}
 }

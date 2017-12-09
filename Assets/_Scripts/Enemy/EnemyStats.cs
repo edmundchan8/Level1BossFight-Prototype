@@ -12,6 +12,9 @@ public class EnemyStats : MonoBehaviour
 	[SerializeField]
 	GameObject m_ItemDrop;
 
+	[SerializeField]
+	int m_BossAttackBeforeDazed;
+
 	float CAN_DROP_VALUE = 0.75f;
 
 	int m_EnemyHealth;
@@ -107,5 +110,10 @@ public class EnemyStats : MonoBehaviour
 	public int GetShots()
 	{
 		return m_Shots;
+	}
+
+	public int ReturnBossAttacksBeforeDazed()
+	{
+		return m_BossAttackBeforeDazed;
 	}
 }
