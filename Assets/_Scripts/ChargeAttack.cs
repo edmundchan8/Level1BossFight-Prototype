@@ -31,12 +31,17 @@ public class ChargeAttack : MonoBehaviour
 			Vector2 endPos = new Vector2(GameController.instance.ReturnPlayerPos().x, GameController.instance.ReturnPlayerPos().y);
 			SetProjectileDirection(currentPos, endPos);
 			m_MoveTimer.Set(m_MoveDuration);
+			if (m_ChargeAttempts <= 0)
+			{
+				GameController.instance.ReturnBossDetect().SetAttacking(true);
+			}
 		}
 
 		if (!m_MoveTimer.Update(Time.deltaTime))
 		{
 			transform.Translate(m_Direction * m_Speed, Space.World);
 		}
+
 	}
 
 	public void StartChargeAttack()

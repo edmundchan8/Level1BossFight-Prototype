@@ -37,7 +37,7 @@ public class BossDetect : MonoBehaviour
 			else if (DistanceFromPlayer() < CLOSE_DISTANCE && IsAttacking)
 			{
 				Debug.Log("AOE attack");
-				SetAttacking(false);
+				//SetAttacking(false);
 			}
 		}
 	}
