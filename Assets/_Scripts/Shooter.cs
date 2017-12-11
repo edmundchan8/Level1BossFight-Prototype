@@ -35,7 +35,7 @@ public class Shooter : MonoBehaviour
 			m_ShootTimer.Set(WAIT_DURATION);
 			if (m_ShotCounter <= 0)
 			{
-				GameController.instance.ReturnBossDetect().SetAttacking(true);
+				Invoke("SetAttackingTrue", WAIT_DURATION);
 			}
 		}
 
@@ -72,5 +72,10 @@ public class Shooter : MonoBehaviour
 	public void SetShotLimit(int limit)
 	{
 		m_ShotCounter = limit;
+	}
+
+	void SetAttackingTrue()
+	{
+		GameController.instance.ReturnBossDetect().SetAttacking(true);
 	}
 }

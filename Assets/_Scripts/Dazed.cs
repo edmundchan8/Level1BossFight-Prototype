@@ -34,6 +34,7 @@ public class Dazed : MonoBehaviour
 	{
 		yield return new WaitForSeconds(DazedTime);
 		SetDazed(false);
+		GameController.instance.ReturnBossDetect().SetAttacksBeforeDazed();
 		Debug.Log("Not Dazed");
 	}
 }

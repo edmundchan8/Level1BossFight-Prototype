@@ -16,7 +16,7 @@ public class BossDetect : MonoBehaviour
 
 	void Start()
 	{
-		m_AttacksBeforeDazed = GameController.instance.ReturnBossStats().ReturnBossAttacksBeforeDazed();
+		SetAttacksBeforeDazed();
 	}
 
 	void OnTriggerStay2D(Collider2D myCol)
@@ -26,20 +26,20 @@ public class BossDetect : MonoBehaviour
 			if ((DistanceFromPlayer() > CHARGE_DISTANCE) && (DistanceFromPlayer() < FIRE_ATTACK_DISTANCE) && m_IsAttacking)
 			{
 				Debug.Log("Fireball attack");
-				Attacking();
+				SetAttacking(false);
 				int shots = GameController.instance.ReturnBossStats().GetShots();
 				GameController.instance.ReturnBossShooter().SetShotLimit(shots);
 			}
 			else if ((DistanceFromPlayer() > CLOSE_DISTANCE) && (DistanceFromPlayer() < CHARGE_DISTANCE) && m_IsAttacking)
 			{
 				Debug.Log("Charge Attack");
-				Attacking();
+				SetAttacking(false);
 				GameController.instance.ReturnBossChargeAttack().StartChargeAttack();
 			}
 			else if ((DistanceFromPlayer() < CLOSE_DISTANCE) && m_IsAttacking)
 			{
 				Debug.Log("AOE attack");
-				Attacking();
+				SetAttacking(false);
 				GameController.instance.ReturnAOEAttack().StartCharging();
 			}
 		}
@@ -52,19 +52,23 @@ public class BossDetect : MonoBehaviour
 		return distance;
 	}
 
-	void Attacking()
-	{
-		m_AttacksBeforeDazed--;
-		SetAttacking(false);
-		if (m_AttacksBeforeDazed <= 0)
-		{
-			GameController.instance.ReturnBossDaze().SetDazed(true);
-		}
-	}
-
 	public bool SetAttacking(bool choice)
 	{
+		//Only when we set the attack to true, thats when we reduce the attacksbefore dazed.
+		if (choice)
+		{
+			m_AttacksBeforeDazed--;
+			if (m_AttacksBeforeDazed <= 0)
+			{
+				GameController.instance.ReturnBossDaze().SetDazed(true);
+			}
+		}
 		m_IsAttacking = choice;
 		return m_IsAttacking;
+	}
+
+	public void SetAttacksBeforeDazed()
+	{
+		m_AttacksBeforeDazed = GameController.instance.ReturnBossStats().ReturnBossAttacksBeforeDazed();
 	}
 }

@@ -61,7 +61,7 @@ public class EnemyStats : MonoBehaviour
 		return m_EnemyAttack;
 	}
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, string enemyTag)
 	{
 		m_EnemyHealth -= damage;
 		GameObject enemyHealthbar = m_HealthBar;
@@ -70,7 +70,11 @@ public class EnemyStats : MonoBehaviour
 		localScale.x = xValue;
 		enemyHealthbar.transform.localScale = localScale;
 		m_HealthBar = enemyHealthbar;
-		m_EnemyMove.EnemyPushBack();
+		//TODO - We should only push back if this is not the boss
+		if(enemyTag != "EnemyBoss")
+		{
+			m_EnemyMove.EnemyPushBack();
+		}
 	}
 
 	void EnemyDies()

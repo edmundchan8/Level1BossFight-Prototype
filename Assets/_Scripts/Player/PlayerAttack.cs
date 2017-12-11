@@ -53,7 +53,13 @@ public class PlayerAttack : MonoBehaviour
 		if (myCol.gameObject.tag == "Enemy")
 		{
 			EnemyStats enemyHP = myCol.gameObject.GetComponent<EnemyStats>();
-			enemyHP.TakeDamage(m_GameData.GetPlayerCurrentStrength());
+			enemyHP.TakeDamage(m_GameData.GetPlayerCurrentStrength(), myCol.gameObject.tag.ToString());
+		}
+
+		else if (myCol.gameObject.tag == "EnemyBoss" && GameController.instance.ReturnBossDaze().GetDazed())
+		{
+			EnemyStats enemyHP = myCol.gameObject.GetComponent<EnemyStats>();
+			enemyHP.TakeDamage(m_GameData.GetPlayerCurrentStrength(), myCol.gameObject.tag.ToString());
 		}
 	}
 
