@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 538, y: 342}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 6747
+  controlID: 11193
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_MinSize: {x: 102, y: 242}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 6702
+  controlID: 11119
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -282,7 +282,7 @@ MonoBehaviour:
     - {fileID: 1107654864138592734, guid: b0897cc1a2d91437794e9e8f506bcbc4, type: 2}
     m_ValueSerializationHelper:
     - {x: 362.40002, y: 193.6}
-    - {x: 480.36487, y: 203.25464}
+    - {x: 528.40015, y: 211.6}
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 9100000, guid: b0897cc1a2d91437794e9e8f506bcbc4,
     type: 2}
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 342}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 6748
+  controlID: 11194
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 6805
+  controlID: 11259
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -515,9 +515,9 @@ MonoBehaviour:
     height: 334
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a041faff
+    m_SelectedIDs: 02f2ebff
     m_LastClickedID: 0
-    m_ExpandedIDs: a6fbffffe2fbffff0000000000270000c42b0000
+    m_ExpandedIDs: 64e8f6ffa6fbffffe2fbffff0000000000270000c82b00004e2e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -603,19 +603,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Sprites/Player
+    - Assets/Animator
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Sprites/Player
+  - Assets/Animator
   m_LastFoldersGridSize: 16
   m_LastProjectPath: /Users/Edmund/Desktop/ProtoType-Level1BossFight
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 16280000
-    m_LastClickedID: 10262
-    m_ExpandedIDs: 0000000032270000f02700000c28000070280000ffffff7f
+    m_SelectedIDs: ca270000
+    m_LastClickedID: 10186
+    m_ExpandedIDs: 0000000034270000f22700000e28000072280000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -643,7 +643,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000032270000f02700000c28000070280000ffffff7f
+    m_ExpandedIDs: 0000000034270000f22700000e28000072280000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -668,24 +668,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a041faff
-    m_LastClickedInstanceID: -376416
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 00230000ec2300008c9400000a9d000014230000ac2200000e220000e2220000e6220000ee220000fe220000fa220000622800002029000062220000e22100001a220000642200003e230000d02100009622000012b6ffff9c220000de210000aa220000f2210000a822000000000000b02200004a2f00004422000074220000f2600000646a0000d2270000c82c00004e2500009e2b0000e276000020280000
+    m_SelectedInstanceIDs: 02f2ebff
+    m_LastClickedInstanceID: -1314302
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: 00230000ec2300008c9400000a9d000014230000ac2200000e220000e2220000e6220000ee220000fe220000fa220000622800002029000062220000e22100001a220000642200003e230000d02100009622000012b6ffff9c220000de210000aa220000f2210000a822000000000000b02200004a2f00004422000074220000f2600000646a0000aa270000d2270000c82c00004e2500009e2b0000e2760000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Sprites
-      m_OriginalName: Sprites
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10352
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 16}
     m_CreateAssetUtility:
@@ -695,6 +695,6 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 71}
     m_GridSize: 16
   m_DirectoriesAreaWidth: 110

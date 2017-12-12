@@ -30,8 +30,15 @@ public class PlayerMove : MonoBehaviour
 
 	void FixedUpdate () 
 	{
-		float movement = Input.GetAxis("Horizontal");
-		m_PlayerAnimator.SetFloat("Movement", movement);
+		float horizontalMovement = Input.GetAxis("Horizontal");
+		m_PlayerAnimator.SetFloat("Movement", horizontalMovement);
+		float verticalMovement = Input.GetAxis("Vertical");
+		m_PlayerAnimator.SetFloat("VerticalMovement", verticalMovement);
+		if (verticalMovement >= 0.1f)
+		{
+			m_PlayerAnimator.SetBool("IsFacingUp", true);
+		}
+
 		m_Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed);
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
@@ -52,6 +59,7 @@ public class PlayerMove : MonoBehaviour
 		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 		{
 			m_FacingDirection = Vector2.down;
+			m_PlayerAnimator.SetBool("IsFacingUp", false);
 		}
 	}
 

@@ -75,11 +75,13 @@ public class PlayerAttack : MonoBehaviour
 		{
 			transform.localPosition = SLASH_UP;
 			transform.localRotation = SLASH_ROT_UP;
+			m_PlayerAttackAnimator.SetTrigger("IsAttackUp");
 		}
 		else if (direction == Vector2.down)
 		{
 			transform.localPosition = SLASH_DOWN;
 			transform.localRotation = SLASH_ROT_DOWN;
+			m_PlayerAttackAnimator.SetTrigger("IsAttackDown");
 		}
 		else
 		{
