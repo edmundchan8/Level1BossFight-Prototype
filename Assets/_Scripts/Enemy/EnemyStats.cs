@@ -30,6 +30,8 @@ public class EnemyStats : MonoBehaviour
 	GameObject m_HealthBar;
 	[SerializeField]
 	GameObject m_HealthBarBackGround;
+	[SerializeField]
+	GameObject m_Shadow;
 
 	[Header ("Shooter")]
 	[SerializeField]
@@ -82,6 +84,7 @@ public class EnemyStats : MonoBehaviour
 		m_IsDead = true;
 		DisableCollider2D();
 		DisableHealthBarBackGround();
+		DisableShadow();
 		m_Animator.SetBool("IsDead", true);
 		Invoke("DestroyEnemy", DEATH_DURATION);
 	}
@@ -109,6 +112,11 @@ public class EnemyStats : MonoBehaviour
 	void DisableHealthBarBackGround()
 	{
 		m_HealthBarBackGround.SetActive(false);
+	}
+
+	void DisableShadow()
+	{
+		m_Shadow.SetActive(false);
 	}
 
 	public int GetShots()
