@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 	[SerializeField]
 	float m_Speed;
 	[SerializeField]
-	float m_Damage;
+	int m_Damage;
 
 	[SerializeField]
 	Vector2 m_Direction;
@@ -22,5 +22,13 @@ public class Projectile : MonoBehaviour
 	void Update()
 	{
 		transform.Translate(m_Direction * m_Speed);
+	}
+
+	void OnTriggerEnter2D(Collider2D myCol)
+	{
+		if (myCol.gameObject.tag == "Player")
+		{
+			GameController.instance.ReturnPlayerStats().OnPlayerHit(m_Damage);
+		}
 	}
 }

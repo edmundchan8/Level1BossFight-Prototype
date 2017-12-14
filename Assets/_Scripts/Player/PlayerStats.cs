@@ -69,6 +69,7 @@ public class PlayerStats : MonoBehaviour
 	public void OnPlayerHit(int damageAmount)
 	{
 		m_PlayerHealth -= damageAmount;
+		GameController.instance.ReturnPlayerFlashingScript().StartFlashing();
 		if (m_PlayerHealth <= MIN_HEALTH)
 		{
 			m_PlayerDead = true;

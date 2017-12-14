@@ -70,8 +70,6 @@ public class PlayerMove : MonoBehaviour
 			Vector2 enemyPos = new Vector2(myCol.gameObject.transform.position.x, myCol.gameObject.transform.position.y);
 			int enemyAttackDamage = myCol.gameObject.GetComponent<EnemyStats>().DealDamage();
 			PlayerKnockBack(enemyAttackDamage, enemyPos);
-			//TODO: This is where we start player flashing
-			GameController.instance.ReturnPlayerFlashingScript().StartFlashing();
 		}
 	}
 
