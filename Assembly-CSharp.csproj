@@ -72,6 +72,7 @@
      <Compile Include="Assets\_Scripts\Player\PlayerStats.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerTouch.cs" />
      <Compile Include="Assets\_Scripts\Projectile.cs" />
+     <Compile Include="Assets\_Scripts\SelfDestruct.cs" />
      <Compile Include="Assets\_Scripts\Shooter.cs" />
      <Compile Include="Assets\_Scripts\Spawner.cs" />
      <Compile Include="Assets\_Scripts\Timer.cs" />
