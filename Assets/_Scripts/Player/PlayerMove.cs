@@ -63,6 +63,7 @@ public class PlayerMove : MonoBehaviour
 		}
 	}
 
+	//On Touching enemy
 	void OnTriggerEnter2D(Collider2D myCol)
 	{
 		if (myCol.gameObject.tag == "Enemy" && !GameController.instance.ReturnPlayerAttackScript().PlayerAttacking() && !m_PlayerStats.ReturnInvulnerable())

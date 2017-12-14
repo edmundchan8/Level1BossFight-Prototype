@@ -16,6 +16,9 @@ public class ChargeAttack : MonoBehaviour
 	int MAX_ATTEMPTS = 3;
 
 	[SerializeField]
+	int m_Damage;
+
+	[SerializeField]
 	float m_Speed;
 
 	Vector2 m_Direction;
@@ -54,5 +57,14 @@ public class ChargeAttack : MonoBehaviour
 	public void SetProjectileDirection(Vector2 currentPos, Vector2 endPos)
 	{
 		m_Direction = (endPos - currentPos).normalized;
+	}
+
+	void OnTriggerEnter2D(Collider2D myCol)
+	{
+		print(myCol);
+		if (myCol.gameObject.tag == "Player")
+		{
+			GameController.instance.ReturnPlayerStats().OnPlayerHit(m_Damage);
+		}
 	}
 }
