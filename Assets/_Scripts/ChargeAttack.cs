@@ -14,6 +14,8 @@ public class ChargeAttack : MonoBehaviour
 	int m_ChargeAttempts = 0;
 	int MIN_ATTEMPTS = 1;
 	int MAX_ATTEMPTS = 3;
+	[SerializeField]
+	GameObject m_Boss;
 
 	[SerializeField]
 	int m_Damage;
@@ -42,7 +44,7 @@ public class ChargeAttack : MonoBehaviour
 
 		if (!m_MoveTimer.Update(Time.deltaTime))
 		{
-			transform.Translate(m_Direction * m_Speed, Space.World);
+			m_Boss.transform.Translate(m_Direction * m_Speed, Space.World);
 		}
 
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, -5f, 15f), Mathf.Clamp(transform.position.y, -83f, -64), transform.position.z);
