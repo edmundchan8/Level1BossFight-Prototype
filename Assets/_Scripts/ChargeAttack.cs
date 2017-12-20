@@ -18,6 +18,9 @@ public class ChargeAttack : MonoBehaviour
 	GameObject m_Boss;
 
 	[SerializeField]
+	Animator m_BossAnimator;
+
+	[SerializeField]
 	int m_Damage;
 
 	[SerializeField]
@@ -44,7 +47,24 @@ public class ChargeAttack : MonoBehaviour
 
 		if (!m_MoveTimer.Update(Time.deltaTime))
 		{
+			if (m_BossAnimator.GetBool("Charge") == false)
+			{
+				m_BossAnimator.SetBool("Charge", true);
+			}
 			m_Boss.transform.Translate(m_Direction * m_Speed, Space.World);
+			Vector2 moveDirection = m_Direction * m_Speed;
+			if(moveDirection.x < 0f)
+			{
+				m_Boss.transform.localScale = new Vector2(-1, 1);
+			}
+			else
+			{
+				m_Boss.transform.localScale = new Vector2(1, 1);
+			}
+		}
+		else
+		{
+			m_BossAnimator.SetBool("Charge", false);
 		}
 
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, -5f, 15f), Mathf.Clamp(transform.position.y, -83f, -64), transform.position.z);
