@@ -30,8 +30,14 @@ public class ChargeAttack : MonoBehaviour
 
 	void Update()
 	{
+		if (m_ChargeAttempts > 0 && !m_ChargeTimer.Update(Time.deltaTime))
+		{
+			m_BossAnimator.SetBool("Crouch", true);
+		}
 		if (m_ChargeAttempts > 0 && m_ChargeTimer.Update(Time.deltaTime))
 		{
+
+			m_BossAnimator.SetBool("Crouch", false);
 			//Charge at player
 			m_ChargeAttempts--;
 			m_ChargeTimer.Set(m_ChargeDuration);
@@ -51,7 +57,7 @@ public class ChargeAttack : MonoBehaviour
 			{
 				m_BossAnimator.SetBool("Charge", true);
 			}
-			m_Boss.transform.Translate(m_Direction * m_Speed, Space.World);
+			m_Boss.transform.Translate(m_Direction * m_Speed);
 			Vector2 moveDirection = m_Direction * m_Speed;
 			if(moveDirection.x < 0f)
 			{
@@ -67,7 +73,7 @@ public class ChargeAttack : MonoBehaviour
 			m_BossAnimator.SetBool("Charge", false);
 		}
 
-		transform.position = new Vector3(Mathf.Clamp(transform.position.x, -5f, 15f), Mathf.Clamp(transform.position.y, -83f, -64), transform.position.z);
+		m_Boss.transform.position = new Vector3(Mathf.Clamp(m_Boss.transform.position.x, -5f, 15f), Mathf.Clamp(m_Boss.transform.position.y, -83f, -64), m_Boss.transform.position.z);
 	}
 
 	public void StartChargeAttack()
