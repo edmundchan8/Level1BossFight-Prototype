@@ -25,6 +25,9 @@ public class PlayerStats : MonoBehaviour
 	GameObject m_BackPack;
 	Animator m_BackPackAnimator;
 
+	[SerializeField]
+	Animator m_PlayerAnimator;
+
 	GameData m_GameData;
 
 	void Start()
@@ -64,6 +67,7 @@ public class PlayerStats : MonoBehaviour
 			GameController.instance.ReturnWarningScript().DisableWarningPanel();
 		}
 		SetInvulnerable(GameController.instance.ReturnPlayerFlashingScript().ReturnIsFlashing());
+		m_PlayerAnimator.SetBool("Dead", PlayerDead());
 	}
 
 	public void OnPlayerHit(int damageAmount)
