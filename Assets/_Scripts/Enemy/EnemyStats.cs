@@ -72,6 +72,11 @@ public class EnemyStats : MonoBehaviour
 		localScale.x = xValue;
 		enemyHealthbar.transform.localScale = localScale;
 		m_HealthBar = enemyHealthbar;
+		if (enemyTag == "EnemyBoss")
+		{
+			GameController.instance.ReturnBossFlashing().StartFlashing();
+		}
+
 		//TODO - We should only push back if this is not the boss
 		if(enemyTag != "EnemyBoss")
 		{

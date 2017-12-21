@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
 	AOEAttack m_BossAOEAttack;
 	[SerializeField]
 	Dazed m_BossDaze;
+	[SerializeField]
+	Flashing m_BossFlashing;
 
 	[Header("Save Data")]
 	[SerializeField]
@@ -158,5 +160,10 @@ public class GameController : MonoBehaviour
 	public Dazed ReturnBossDaze()
 	{
 		return m_BossDaze;
+	}
+
+	public Flashing ReturnBossFlashing()
+	{
+		return m_BossFlashing;
 	}
 }
