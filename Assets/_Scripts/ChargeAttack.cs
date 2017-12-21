@@ -17,6 +17,8 @@ public class ChargeAttack : MonoBehaviour
 	[SerializeField]
 	GameObject m_Boss;
 
+	SpriteRenderer m_Sprite;
+
 	[SerializeField]
 	Animator m_BossAnimator;
 
@@ -28,6 +30,11 @@ public class ChargeAttack : MonoBehaviour
 
 	Vector2 m_Direction;
 
+	void Start()
+	{
+		m_Sprite = GetComponent<SpriteRenderer>();
+	}
+
 	void Update()
 	{
 		if (m_ChargeAttempts > 0 && !m_ChargeTimer.Update(Time.deltaTime))
@@ -36,11 +43,10 @@ public class ChargeAttack : MonoBehaviour
 		}
 		if (m_ChargeAttempts > 0 && m_ChargeTimer.Update(Time.deltaTime))
 		{
-
+			m_ChargeTimer.Set(m_ChargeDuration + m_MoveDuration);
 			m_BossAnimator.SetBool("Crouch", false);
 			//Charge at player
 			m_ChargeAttempts--;
-			m_ChargeTimer.Set(m_ChargeDuration);
 			Vector2 currentPos = new Vector2(transform.position.x, transform.position.y);
 			Vector2 endPos = new Vector2(GameController.instance.ReturnPlayerPos().x, GameController.instance.ReturnPlayerPos().y);
 			SetProjectileDirection(currentPos, endPos);
@@ -61,11 +67,13 @@ public class ChargeAttack : MonoBehaviour
 			Vector2 moveDirection = m_Direction * m_Speed;
 			if(moveDirection.x < 0f)
 			{
-				m_Boss.transform.localScale = new Vector2(-1, 1);
+				print("less");
+				m_Sprite.flipX = true;
 			}
 			else
 			{
-				m_Boss.transform.localScale = new Vector2(1, 1);
+				print("more");
+				m_Sprite.flipX = false;
 			}
 		}
 		else
@@ -73,7 +81,7 @@ public class ChargeAttack : MonoBehaviour
 			m_BossAnimator.SetBool("Charge", false);
 		}
 
-		m_Boss.transform.position = new Vector3(Mathf.Clamp(m_Boss.transform.position.x, -5f, 15f), Mathf.Clamp(m_Boss.transform.position.y, -83f, -64), m_Boss.transform.position.z);
+		m_Boss.transform.position = new Vector3(Mathf.Clamp(m_Boss.transform.position.x, -4f, 16f), Mathf.Clamp(m_Boss.transform.position.y, -83f, -64), m_Boss.transform.position.z);
 	}
 
 	public void StartChargeAttack()

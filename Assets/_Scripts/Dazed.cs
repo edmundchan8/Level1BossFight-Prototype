@@ -9,13 +9,16 @@ public class Dazed : MonoBehaviour
 	[SerializeField]
 	float DazedTime;
 
+	[SerializeField]
+	Animator m_BossAnimator;
+
 	//Set Dazed to be true
 	public void SetDazed(bool choice)
 	{
 		m_Dazed = choice;
 		if (m_Dazed)
 		{
-			//BossAnmation.SetTrigger("Dazed");
+			m_BossAnimator.SetBool("Daze", true);
 			Debug.Log("Dazed");
 			StartCoroutine("SetDazedOff");
 		}
@@ -34,6 +37,7 @@ public class Dazed : MonoBehaviour
 	{
 		yield return new WaitForSeconds(DazedTime);
 		SetDazed(false);
+		m_BossAnimator.SetBool("Daze", false);
 		GameController.instance.ReturnBossDetect().SetAttacksBeforeDazed();
 		Debug.Log("Not Dazed");
 	}
