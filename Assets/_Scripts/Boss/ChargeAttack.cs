@@ -67,12 +67,10 @@ public class ChargeAttack : MonoBehaviour
 			Vector2 moveDirection = m_Direction * m_Speed;
 			if(moveDirection.x < 0f)
 			{
-				print("less");
 				m_Sprite.flipX = true;
 			}
 			else
 			{
-				print("more");
 				m_Sprite.flipX = false;
 			}
 		}
@@ -97,7 +95,6 @@ public class ChargeAttack : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D myCol)
 	{
-		print(myCol);
 		if (myCol.gameObject.tag == "Player")
 		{
 			GameController.instance.ReturnPlayerStats().OnPlayerHit(m_Damage);

@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
 	int m_PlayerStrength = 10;
 	int m_PlayerDefence = 10;
 
-	bool m_PlayerDead;
+	bool m_PlayerDead = false;
 
 	bool m_Invulnerable;
 
@@ -33,7 +33,6 @@ public class PlayerStats : MonoBehaviour
 	void Start()
 	{
 		m_Invulnerable = false;
-		m_PlayerDead = false;
 		m_BackPackAnimator = m_BackPack.GetComponent<Animator>();
 		m_PlayerHealth = MAX_HEALTH;
 		m_HealthImage.sizeDelta = new Vector2(m_PlayerHealth, HEALTH_IMAGE_HEIGHT);
@@ -105,10 +104,6 @@ public class PlayerStats : MonoBehaviour
 
 	public bool PlayerDead()
 	{
-		if (m_PlayerDead)
-		{
-			Debug.Log("Player dead");
-		}
 		return m_PlayerDead;
 	}
 

@@ -51,11 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\AOEAttack.cs" />
      <Compile Include="Assets\_Scripts\BackPackScript.cs" />
-     <Compile Include="Assets\_Scripts\BossDetect.cs" />
-     <Compile Include="Assets\_Scripts\BossTile.cs" />
-     <Compile Include="Assets\_Scripts\ChargeAttack.cs" />
+     <Compile Include="Assets\_Scripts\Boss\AOEAttack.cs" />
+     <Compile Include="Assets\_Scripts\Boss\BossDetect.cs" />
+     <Compile Include="Assets\_Scripts\Boss\BossTile.cs" />
+     <Compile Include="Assets\_Scripts\Boss\ChargeAttack.cs" />
      <Compile Include="Assets\_Scripts\Dazed.cs" />
      <Compile Include="Assets\_Scripts\Enemy\EnemyMove.cs" />
      <Compile Include="Assets\_Scripts\Enemy\EnemyStats.cs" />
@@ -63,6 +63,7 @@
      <Compile Include="Assets\_Scripts\FollowPlayer.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GameData.cs" />
+     <Compile Include="Assets\_Scripts\GameOverPanel.cs" />
      <Compile Include="Assets\_Scripts\Home.cs" />
      <Compile Include="Assets\_Scripts\Invulnerable.cs" />
      <Compile Include="Assets\_Scripts\LevelManager.cs" />
