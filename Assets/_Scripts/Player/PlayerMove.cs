@@ -30,36 +30,43 @@ public class PlayerMove : MonoBehaviour
 
 	void FixedUpdate () 
 	{
-		float horizontalMovement = Input.GetAxis("Horizontal");
-		m_PlayerAnimator.SetFloat("Movement", horizontalMovement);
-		float verticalMovement = Input.GetAxis("Vertical");
-		m_PlayerAnimator.SetFloat("VerticalMovement", verticalMovement);
-		if (verticalMovement >= 0.1f)
+		if (!GameController.instance.ReturnPlayerStats().PlayerDead())
 		{
-			m_PlayerAnimator.SetBool("IsFacingUp", true);
-		}
+			float horizontalMovement = Input.GetAxis("Horizontal");
+			m_PlayerAnimator.SetFloat("Movement", horizontalMovement);
+			float verticalMovement = Input.GetAxis("Vertical");
+			m_PlayerAnimator.SetFloat("VerticalMovement", verticalMovement);
+			if (verticalMovement >= 0.1f)
+			{
+				m_PlayerAnimator.SetBool("IsFacingUp", true);
+			}
 
-		m_Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed);
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-		{
-			float x = -1;
-			transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
-			m_FacingDirection = Vector2.left;
+			m_Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed);
+			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+			{
+				float x = -1;
+				transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+				m_FacingDirection = Vector2.left;
+			}
+			else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+			{
+				float x = 1;
+				transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
+				m_FacingDirection = Vector2.right;
+			}
+			else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+			{
+				m_FacingDirection = Vector2.up;
+			}
+			else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+			{
+				m_FacingDirection = Vector2.down;
+				m_PlayerAnimator.SetBool("IsFacingUp", false);
+			}
 		}
-		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+		else
 		{
-			float x = 1;
-			transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
-			m_FacingDirection = Vector2.right;
-		}
-		else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-		{
-			m_FacingDirection = Vector2.up;
-		}
-		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-		{
-			m_FacingDirection = Vector2.down;
-			m_PlayerAnimator.SetBool("IsFacingUp", false);
+			m_Rigidbody2D.velocity = Vector2.zero;
 		}
 	}
 
