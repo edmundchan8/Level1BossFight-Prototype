@@ -13,7 +13,7 @@ public class GameOverPanel : MonoBehaviour
 	void Start()
 	{
 		m_Panel = GetComponent<Image>();
-		StartCoroutine("SetTimer");
+		StartCoroutine("SetDeadTimer");
 	}
 
 	void Update()
@@ -22,14 +22,13 @@ public class GameOverPanel : MonoBehaviour
 		m_FadeTimer.Update(Time.deltaTime);
 		if (GameController.instance.ReturnPlayerStats().PlayerDead())
 		{
-			SetPanelColor(Color.black);
-			float alpha = (FADE_DURATION - m_FadeTimer.GetTime()) / FADE_DURATION;
-			do
+			if (!m_FadeTimer.HasCompleted())
 			{
+				float alpha = (FADE_DURATION - m_FadeTimer.GetTime()) / FADE_DURATION;
 				Color currentColor = m_Panel.color;
 				currentColor.a = alpha;
 				m_Panel.color = currentColor;
-			} while (alpha < 1f);
+			}
 		}
 	}
 
@@ -42,9 +41,10 @@ public class GameOverPanel : MonoBehaviour
 		m_Panel.color = currentColor;
 	}
 
-	IEnumerator SetTimer()
+	IEnumerator SetDeadTimer()
 	{
 		yield return new WaitUntil(() => GameController.instance.ReturnPlayerStats().PlayerDead());
+		SetPanelColor(Color.black);
 		m_FadeTimer.Set(FADE_DURATION);
 	}
 }
