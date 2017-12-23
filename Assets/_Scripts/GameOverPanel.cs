@@ -21,19 +21,16 @@ public class GameOverPanel : MonoBehaviour
 
 	void Update()
 	{
-
-		m_FadeTimer.Update(Time.deltaTime);
 		if (GameController.instance.ReturnPlayerStats().PlayerDead())
 		{
 			float alpha = (FADE_DURATION - m_FadeTimer.GetTime()) / FADE_DURATION;
-			while (alpha < 1f)
+			if (!m_FadeTimer.Update(Time.deltaTime))
 			{
 				Color currentColor = m_Panel.color;
 				currentColor.a = alpha;
 				m_Panel.color = currentColor;
-				print(alpha);
 			}
-			if (alpha >= 1f)
+			else if (m_FadeTimer.Update(Time.deltaTime) && m_FadeTimer.HasCompleted())
 			{
 				m_GameOver.gameObject.SetActive(true);
 			}
