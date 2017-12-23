@@ -79,7 +79,7 @@ public class ChargeAttack : MonoBehaviour
 			m_BossAnimator.SetBool("Charge", false);
 		}
 
-		m_Boss.transform.position = new Vector3(Mathf.Clamp(m_Boss.transform.position.x, -4f, 16f), Mathf.Clamp(m_Boss.transform.position.y, -83f, -64), m_Boss.transform.position.z);
+		m_Boss.transform.position = new Vector3(Mathf.Clamp(m_Boss.transform.position.x, -7f, 16f), Mathf.Clamp(m_Boss.transform.position.y, -85f, -64), m_Boss.transform.position.z);
 	}
 
 	public void StartChargeAttack()
