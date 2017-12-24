@@ -21,7 +21,7 @@ public class BossDetect : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D myCol)
 	{
-		if (myCol.gameObject.tag == "Player" && GameController.instance.GetTerrainState() == BOSS_TERRAIN_ESTATE && !GameController.instance.ReturnBossDaze().GetDazed())
+		if (myCol.gameObject.tag == "Player" && GameController.instance.GetTerrainState() == BOSS_TERRAIN_ESTATE && !GameController.instance.ReturnBossDaze().GetDazed() && BossCanAttack())
 		{
 			if ((DistanceFromPlayer() > CHARGE_DISTANCE) && (DistanceFromPlayer() < FIRE_ATTACK_DISTANCE) && m_IsAttacking)
 			{
@@ -42,6 +42,10 @@ public class BossDetect : MonoBehaviour
 				SetAttacking(false);
 				GameController.instance.ReturnAOEAttack().StartCharging();
 			}
+		}
+		if (!BossCanAttack())
+		{
+			print("Can't attack");
 		}
 	}
 
@@ -70,5 +74,10 @@ public class BossDetect : MonoBehaviour
 	public void SetAttacksBeforeDazed()
 	{
 		m_AttacksBeforeDazed = GameController.instance.ReturnBossStats().ReturnBossAttacksBeforeDazed();
+	}
+
+	public bool BossCanAttack()
+	{
+		return !GameController.instance.ReturnBossStats().IsEnemyDead();
 	}
 }

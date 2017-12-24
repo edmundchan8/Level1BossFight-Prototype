@@ -19,11 +19,13 @@ public class EnemyStats : MonoBehaviour
 
 	int m_EnemyHealth;
 	int m_EnemyAttack;
-	float DEATH_DURATION = 1f;
+	[SerializeField]
+	float DEATH_DURATION;
 	bool m_IsDead = false;
 
 	[Header ("Accessor")]
 	EnemyMove m_EnemyMove;
+	[SerializeField]
 	Animator m_Animator;
 	CircleCollider2D m_CircleCollider2D;
 	[SerializeField]
@@ -39,7 +41,6 @@ public class EnemyStats : MonoBehaviour
 
 	void Start()
 	{
-		m_Animator = GetComponent<Animator>();
 		m_CircleCollider2D = GetComponent<CircleCollider2D>();
 		m_EnemyHealth = m_HealthAmount;
 		m_EnemyAttack = m_AttackDamage;
