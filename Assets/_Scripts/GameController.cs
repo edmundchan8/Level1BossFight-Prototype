@@ -38,10 +38,19 @@ public class GameController : MonoBehaviour
 	Flashing m_BossFlashing;
 
 	[Header("Save Data")]
-	[SerializeField]
-	GameObject m_SaveButton;
+	/* Disable the save button for the time being */
+	//[SerializeField]
+	//GameObject m_SaveButton;
 	[SerializeField]
 	GameData m_GameData;
+
+	[Header("Talk")]
+	[SerializeField]
+	GameObject m_TalkButton;
+	[SerializeField]
+	Image m_SpeechBox;
+	[SerializeField]
+	GameDialogue m_GameDialogue;
 
 	[Header("UI")]
 	[SerializeField]
@@ -99,12 +108,14 @@ public class GameController : MonoBehaviour
 
 	public void OnPlayerHome()
 	{
-		m_SaveButton.SetActive(true);
+		//m_SaveButton.SetActive(true);
+		m_TalkButton.SetActive(true);
 	}
 
 	public void OnPlayerLeftHome()
 	{
-		m_SaveButton.SetActive(false);
+		//m_SaveButton.SetActive(false);
+		m_TalkButton.SetActive(false);
 	}
 
 	public Warning ReturnWarningScript()
@@ -165,5 +176,15 @@ public class GameController : MonoBehaviour
 	public Flashing ReturnBossFlashing()
 	{
 		return m_BossFlashing;
+	}
+
+	public GameDialogue ReturnGameDialogue()
+	{
+		return m_GameDialogue;
+	}
+
+	public bool IsTalkButtonActive()
+	{
+		return m_TalkButton.activeSelf;
 	}
 }

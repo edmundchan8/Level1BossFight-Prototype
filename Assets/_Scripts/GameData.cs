@@ -109,4 +109,52 @@ public class GameData : MonoBehaviour
 	{
 		return PlayerPrefs.GetInt("PlayerPrefsLeather");
 	}
+
+	public void SaveTextStarted()
+	{
+		PlayerPrefs.SetInt("textStarted", 1);
+	}
+
+	public int GetTextStarted()
+	{
+		return PlayerPrefs.GetInt("textStarted");
+	}
+
+	public void SaveBossSeen()
+	{
+		PlayerPrefs.SetInt("bossSeen", 1);
+	}
+
+	public int GetBossSeen()
+	{
+		return PlayerPrefs.GetInt("bossSeen");
+	}
+
+	public void SaveHasDied()
+	{
+		PlayerPrefs.SetInt("hasLost", 1);
+	}
+
+	public int GetHasDied()
+	{
+		return PlayerPrefs.GetInt("hasLost");
+	}
+
+	public void SaveBossDied()
+	{
+		PlayerPrefs.SetInt("bossDied", 1);
+	}
+
+	public int GetBossDied()
+	{
+		return PlayerPrefs.GetInt("bossDied");
+	}
+
+	public void ResetTextPlayerPrefs()
+	{
+		PlayerPrefs.SetInt("textStarted", 0);
+		PlayerPrefs.SetInt("bossSeen", 0);
+		PlayerPrefs.SetInt("hasLost", 0);
+		PlayerPrefs.SetInt("bossDied", 0);
+	}
 }

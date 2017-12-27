@@ -14,6 +14,7 @@ public class BossDetect : MonoBehaviour
 
 	int m_AttacksBeforeDazed;
 
+
 	void Start()
 	{
 		SetAttacksBeforeDazed();
@@ -78,6 +79,7 @@ public class BossDetect : MonoBehaviour
 
 	public bool BossCanAttack()
 	{
+		GameController.instance.ReturnGameData().SaveBossSeen();
 		return !GameController.instance.ReturnBossStats().IsEnemyDead();
 	}
 }

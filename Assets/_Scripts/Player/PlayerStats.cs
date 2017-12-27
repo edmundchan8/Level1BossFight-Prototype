@@ -19,6 +19,8 @@ public class PlayerStats : MonoBehaviour
 
 	bool m_PlayerDead = false;
 
+	bool m_HasDied = false;
+
 	bool m_Invulnerable;
 
 	[SerializeField]
@@ -55,6 +57,12 @@ public class PlayerStats : MonoBehaviour
 		if (Input.GetKeyUp(KeyCode.R))
 		{
 			m_BackPack.GetComponent<BackPackScript>().ResetPickUps();
+			GameController.instance.ReturnGameData().ResetTextPlayerPrefs();
+		}
+
+		if (Input.GetKeyUp(KeyCode.Return) && GameController.instance.IsTalkButtonActive())
+		{
+			GameController.instance.ReturnGameDialogue().SetSpeechBoxActive();
 		}
 
 		if (m_GameData.GetPlayerPrefsHealth() <= HEALTH_WARNING_LIMIT)

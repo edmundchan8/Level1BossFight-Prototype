@@ -10,7 +10,6 @@ public class PlayerMove : MonoBehaviour
 	float KNOCK_BACK_AMOUNT;
 
 	bool FACING_RIGHT = true;
-	bool FACING_UP = false;
 
 	Vector2 m_FacingDirection = Vector2.right;
 
