@@ -88,6 +88,10 @@ public class EnemyStats : MonoBehaviour
 	void EnemyDies()
 	{
 		m_IsDead = true;
+		if (gameObject.tag == "EnemyBoss")
+		{
+			GameController.instance.ReturnGameData().SaveBossDied();
+		}
 		DisableCollider2D();
 		DisableHealthBarBackGround();
 		DisableShadow();

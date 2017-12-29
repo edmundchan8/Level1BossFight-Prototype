@@ -83,6 +83,7 @@ public class PlayerStats : MonoBehaviour
 		GameController.instance.ReturnPlayerFlashingScript().StartFlashing();
 		if (m_PlayerHealth <= MIN_HEALTH)
 		{
+			GameController.instance.ReturnGameData().SaveHasDied();
 			m_PlayerDead = true;
 			m_PlayerHealth = MIN_HEALTH;
 		}

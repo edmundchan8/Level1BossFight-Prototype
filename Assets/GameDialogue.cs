@@ -14,7 +14,7 @@ public class GameDialogue : MonoBehaviour
 	int m_CurrentLine;
 	int m_EndLine;
 
-	bool m_CanStartCoroutine = true;
+	bool m_CanSetTextState = true;
 
 	enum estate{gameStart, postGame, bossSeen, LostBoss, Win}
 
@@ -22,27 +22,32 @@ public class GameDialogue : MonoBehaviour
 
 	int GAME_START = 0;
 	int POST_GAME = 5;
-	int BOSS_SEEN = 8;
+	int BOSS_SEEN = 7;
 	int LOST_BOSS = 10;
 	int WIN = 13;
 
 	void Awake () 
 	{
-		StartCoroutine(SetGameState());
 		m_TextLines = m_OldManText.text.Split('\n');
 		SetSpeechBoxOff();
+	}
+
+	void Start()
+	{
+		GameController.instance.ReturnGameData().ResetTextPlayerPrefs();
 	}
 		
 	void Update()
 	{
-		print("Current " + m_CurrentLine + " End " + m_EndLine);
 		if (Input.GetKeyUp(KeyCode.Return))
 		{
 			m_CurrentLine++;
+			print("Current " + m_CurrentLine + " m_End " + m_EndLine);
 			m_Text.text = m_TextLines[m_CurrentLine];
 			if (m_CurrentLine == m_EndLine)
 			{
-				m_CanStartCoroutine = true;
+				SetGameState();
+				m_CanSetTextState = true;
 				SetSpeechBoxOff();
 			}
 		}
@@ -51,12 +56,13 @@ public class GameDialogue : MonoBehaviour
 	public void SetSpeechBoxActive()
 	{
 		gameObject.SetActive(true);
-		if (m_CanStartCoroutine)
+		if (m_CanSetTextState)
 		{
-			StartCoroutine(SetGameState());
+			SetGameState();
+			print(m_CurrentLine);
+			m_Text.text = m_TextLines[m_CurrentLine];
+			m_CanSetTextState = false;
 		}
-		m_CanStartCoroutine = false;
-		m_Text.text = m_TextLines[m_CurrentLine];
 	}
 
 	public void SetSpeechBoxOff()
@@ -99,29 +105,33 @@ public class GameDialogue : MonoBehaviour
 		}
 	}
 
-	IEnumerator SetGameState()
+	public void SetGameState()
 	{
-		yield return new WaitUntil(() => gameObject.activeSelf);
 		if (GameController.instance.ReturnGameData().GetTextStarted() == 0)
 		{
-			SetDialogueState(GAME_START);
+			print("Setting start game");
 			GameController.instance.ReturnGameData().SaveTextStarted();
+			SetDialogueState(0);
 		}
-		else if (GameController.instance.ReturnGameData().GetTextStarted() == 1 && GameController.instance.ReturnGameData().GetBossSeen() == 0)
+		else if (GameController.instance.ReturnGameData().GetTextStarted() == 1 && GameController.instance.ReturnGameData().GetBossSeen() == 0 && GameController.instance.ReturnGameData().GetBossDied() == 0 && GameController.instance.ReturnGameData().GetHasDied() == 0)
 		{
-			SetDialogueState(POST_GAME);
+			print("Setting post game");
+			SetDialogueState(1);
 		}
-		else if (GameController.instance.ReturnGameData().GetBossSeen() == 1 && GameController.instance.ReturnGameData().GetHasDied() == 0)
+		else if (GameController.instance.ReturnGameData().GetBossSeen() == 1 && GameController.instance.ReturnGameData().GetHasDied() == 0 && GameController.instance.ReturnGameData().GetBossDied() == 0)
 		{
-			SetDialogueState(BOSS_SEEN);
+			print("Setting seen boss");
+			SetDialogueState(2);
 		}
-		else if (GameController.instance.ReturnGameData().GetHasDied() == 1 && GameController.instance.ReturnGameData().GetBossDied() == 0)
+		else if (GameController.instance.ReturnGameData().GetHasDied() == 1 && GameController.instance.ReturnGameData().GetBossDied() == 0 && GameController.instance.ReturnGameData().GetHasDied() == 1)
 		{
-			SetDialogueState(LOST_BOSS);
+			print("Setting player died");
+			SetDialogueState(3);
 		}
-		else
+		else if(GameController.instance.ReturnGameData().GetBossDied() == 1)
 		{
-			SetDialogueState(WIN);
+			print("setting win");
+			SetDialogueState(4);
 		}
 	}
 }
