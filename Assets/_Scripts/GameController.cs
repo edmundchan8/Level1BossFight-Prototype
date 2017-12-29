@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
 	[SerializeField]
 	GameObject m_Player;
 	[SerializeField]
+	GameObject m_PlayerBody;
+	[SerializeField]
 	PlayerStats m_PlayerStats;
 	[SerializeField]
 	PlayerAttack m_PlayerAttack;
@@ -74,11 +76,22 @@ public class GameController : MonoBehaviour
 		{
 			Destroy(this.gameObject);
 		}
+		SetGameObjectScriptAssignment();
 	}
-		
+
 	void Update()
 	{
+		if (m_Player == null)
+		{
+			SetGameObjectScriptAssignment();
+		}
+	}
 
+	public void SetGameObjectScriptAssignment()
+	{
+		m_Player = GameObject.FindGameObjectWithTag("Player");
+		m_PlayerBody = GameObject.FindGameObjectWithTag("PlayerBody");
+		m_PlayerFlashing = m_PlayerBody.GetComponent<Flashing>();
 	}
 
 	public GameData ReturnGameData()

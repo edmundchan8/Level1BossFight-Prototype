@@ -95,7 +95,7 @@ public class ChargeAttack : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D myCol)
 	{
-		if (myCol.gameObject.tag == "Player")
+		if (myCol.gameObject.tag == "PlayerBody")
 		{
 			GameController.instance.ReturnPlayerStats().OnPlayerHit(m_Damage);
 		}

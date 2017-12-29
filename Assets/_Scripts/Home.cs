@@ -7,7 +7,7 @@ public class Home : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D myCol)
 	{
-		if (myCol.gameObject.tag == "Player")
+		if (myCol.gameObject.tag == "PlayerBody")
 		{
 			GameController.instance.OnPlayerHome();
 		}
@@ -15,7 +15,7 @@ public class Home : MonoBehaviour
 
 	void OnTriggerExit2D(Collider2D myCol)
 	{
-		if (myCol.gameObject.tag == "Player")
+		if (myCol.gameObject.tag == "PlayerBody")
 		{
 			GameController.instance.OnPlayerLeftHome();
 		}

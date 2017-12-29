@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D myCol)
 	{
-		if (myCol.gameObject.tag == "Player" && m_SpawnerTimer.HasCompleted())
+		if (myCol.gameObject.tag == "PlayerBody" && m_SpawnerTimer.HasCompleted())
 		{
 			Instantiate(m_EnemyPrefab1, transform.localPosition, m_EnemyPrefab1.transform.rotation);
 			m_SpawnerTimer.Set(SPAWNER_DURATION);
