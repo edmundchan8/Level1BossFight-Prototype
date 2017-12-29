@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
 	{
 		if (Time.time >= TIME_TILL_GAME_SCENE && SceneManager.GetActiveScene().buildIndex == 0)
 		{
+			print("loading");
 			LoadLevel("Game");
 		}
 	}
