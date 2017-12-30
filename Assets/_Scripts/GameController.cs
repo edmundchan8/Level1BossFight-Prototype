@@ -70,29 +70,19 @@ public class GameController : MonoBehaviour
 		if (!instance)
 		{
 			instance = this;
-			DontDestroyOnLoad(this.gameObject);
 		}
 		else
 		{
-			Destroy(this.gameObject);
-		}
-		SetGameObjectScriptAssignment();
-	}
-
-	void Update()
-	{
-		if (m_Player == null)
-		{
-			SetGameObjectScriptAssignment();
+			Destroy(gameObject);
 		}
 	}
 
-	public void SetGameObjectScriptAssignment()
+	/*public void SetGameObjectScriptAssignment()
 	{
 		m_Player = GameObject.FindGameObjectWithTag("Player");
 		m_PlayerBody = GameObject.FindGameObjectWithTag("PlayerBody");
 		m_PlayerFlashing = m_PlayerBody.GetComponent<Flashing>();
-	}
+	}*/
 
 	public GameData ReturnGameData()
 	{
