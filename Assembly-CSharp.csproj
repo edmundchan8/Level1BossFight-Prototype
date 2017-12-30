@@ -80,6 +80,7 @@
      <Compile Include="Assets\_Scripts\Warning.cs" />
      <Compile Include="Assets\Animator\FadeIn.cs" />
      <Compile Include="Assets\GameDialogue.cs" />
+     <Compile Include="Assets\PlayButton.cs" />
      <None Include="Assets\Level1BossText.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
