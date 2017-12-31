@@ -42,7 +42,6 @@ public class GameDialogue : MonoBehaviour
 		if (Input.GetKeyUp(KeyCode.Return))
 		{
 			m_CurrentLine++;
-			print("Current " + m_CurrentLine + " m_End " + m_EndLine);
 			m_Text.text = m_TextLines[m_CurrentLine];
 			if (m_CurrentLine == m_EndLine)
 			{
@@ -59,7 +58,6 @@ public class GameDialogue : MonoBehaviour
 		if (m_CanSetTextState)
 		{
 			SetGameState();
-			print(m_CurrentLine);
 			m_Text.text = m_TextLines[m_CurrentLine];
 			m_CanSetTextState = false;
 		}
@@ -109,28 +107,23 @@ public class GameDialogue : MonoBehaviour
 	{
 		if (GameController.instance.ReturnGameData().GetTextStarted() == 0)
 		{
-			print("Setting start game");
 			GameController.instance.ReturnGameData().SaveTextStarted();
 			SetDialogueState(0);
 		}
 		else if (GameController.instance.ReturnGameData().GetTextStarted() == 1 && GameController.instance.ReturnGameData().GetBossSeen() == 0 && GameController.instance.ReturnGameData().GetBossDied() == 0 && GameController.instance.ReturnGameData().GetHasDied() == 0)
 		{
-			print("Setting post game");
 			SetDialogueState(1);
 		}
 		else if (GameController.instance.ReturnGameData().GetBossSeen() == 1 && GameController.instance.ReturnGameData().GetHasDied() == 0 && GameController.instance.ReturnGameData().GetBossDied() == 0)
 		{
-			print("Setting seen boss");
 			SetDialogueState(2);
 		}
 		else if (GameController.instance.ReturnGameData().GetHasDied() == 1 && GameController.instance.ReturnGameData().GetBossDied() == 0 && GameController.instance.ReturnGameData().GetHasDied() == 1)
 		{
-			print("Setting player died");
 			SetDialogueState(3);
 		}
 		else if(GameController.instance.ReturnGameData().GetBossDied() == 1)
 		{
-			print("setting win");
 			SetDialogueState(4);
 		}
 	}

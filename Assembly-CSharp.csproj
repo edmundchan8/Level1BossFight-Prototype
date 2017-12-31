@@ -63,11 +63,13 @@
      <Compile Include="Assets\_Scripts\FollowPlayer.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GameData.cs" />
+     <Compile Include="Assets\_Scripts\GameDialogue.cs" />
      <Compile Include="Assets\_Scripts\GameOverPanel.cs" />
      <Compile Include="Assets\_Scripts\Home.cs" />
      <Compile Include="Assets\_Scripts\Invulnerable.cs" />
      <Compile Include="Assets\_Scripts\LevelManager.cs" />
      <Compile Include="Assets\_Scripts\PickUpScript.cs" />
+     <Compile Include="Assets\_Scripts\PlayButton.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMove.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerStats.cs" />
@@ -79,8 +81,6 @@
      <Compile Include="Assets\_Scripts\Timer.cs" />
      <Compile Include="Assets\_Scripts\Warning.cs" />
      <Compile Include="Assets\Animator\FadeIn.cs" />
-     <Compile Include="Assets\GameDialogue.cs" />
-     <Compile Include="Assets\PlayButton.cs" />
      <None Include="Assets\Level1BossText.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

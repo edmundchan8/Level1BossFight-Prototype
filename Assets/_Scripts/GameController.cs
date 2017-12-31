@@ -53,6 +53,8 @@ public class GameController : MonoBehaviour
 	Image m_SpeechBox;
 	[SerializeField]
 	GameDialogue m_GameDialogue;
+	[SerializeField]
+	GameOverPanel m_GameOverPanel;
 
 	[Header("UI")]
 	[SerializeField]
@@ -189,5 +191,10 @@ public class GameController : MonoBehaviour
 	public bool IsTalkButtonActive()
 	{
 		return m_TalkButton.activeSelf;
+	}
+
+	public GameOverPanel ReturnGameOverPanel()
+	{
+		return m_GameOverPanel;
 	}
 }

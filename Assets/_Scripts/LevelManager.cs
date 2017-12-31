@@ -6,7 +6,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour 
 {
 	public static LevelManager instance;
-	float TIME_TILL_GAME_SCENE = 2f;
+	float LOAD_NEXT_SCENE_DURATION = 2f;
+	public static int m_CurrentSceneCount;
 
 	void Awake()
 	{
@@ -19,13 +20,50 @@ public class LevelManager : MonoBehaviour
 			Destroy(this.gameObject);
 		}
 	}
-		
+
+	void Start()
+	{
+		if (SceneManager.GetActiveScene().buildIndex == 0)
+		{
+			StartCoroutine("LoadTitle");
+		}
+		if (SceneManager.GetActiveScene().buildIndex == 2)
+		{
+			StartCoroutine("ReloadScene");
+			StartCoroutine("LoadWin");
+		}
+	}
+
 	void Update()
 	{
-		if (Time.time >= TIME_TILL_GAME_SCENE && SceneManager.GetActiveScene().buildIndex == 0)
+		if (m_CurrentSceneCount == 1 && SceneManager.GetActiveScene().buildIndex == 2)
 		{
-			LoadLevel("Title");
+			Debug.Log("Reset Text");
+			GameController.instance.ReturnGameData().ResetTextPlayerPrefs();
 		}
+		m_CurrentSceneCount = SceneManager.GetActiveScene().buildIndex;
+	}
+
+	IEnumerator LoadTitle()
+	{
+		yield return new WaitForSeconds(LOAD_NEXT_SCENE_DURATION);
+		LoadLevel("Title");
+	}
+
+	IEnumerator ReloadScene()
+	{
+		yield return new WaitUntil(() => GameController.instance.ReturnGameOverPanel().GameOver());
+		Debug.Log("Should reload Scene");
+		yield return new WaitForSeconds(LOAD_NEXT_SCENE_DURATION);
+		LoadLevel("Game");
+	}
+
+	IEnumerator LoadWin()
+	{
+		yield return new WaitUntil(() => GameController.instance.ReturnGameOverPanel().Win());
+		Debug.Log("Should start loading win scene");
+		yield return new WaitForSeconds(LOAD_NEXT_SCENE_DURATION);
+		Debug.Log("This should load the win scene");
 	}
 
 	public void LoadLevel(string levelName)
@@ -35,7 +73,6 @@ public class LevelManager : MonoBehaviour
 
 	public void StartNewGame()
 	{
-		GameController.instance.ReturnGameData().ResetTextPlayerPrefs();
 		SceneManager.LoadScene("Game");
 	}
 }

@@ -79,4 +79,13 @@ public class GameOverPanel : MonoBehaviour
 		m_FadeTimer.Set(WIN_FADE_DURATION);
 		SetPanelColor(Color.white);
 	}
+
+	public bool GameOver()
+	{
+		return m_GameOver.IsActive();
+	}
+	public bool Win()
+	{
+		return m_Win.IsActive();
+	}
 }
