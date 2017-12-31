@@ -10,7 +10,8 @@ public class Spawner : MonoBehaviour
 
 	[Header("Timer")]
 	Timer m_SpawnerTimer = new Timer();
-	float SPAWNER_DURATION = 3f;
+	[SerializeField]
+	float SPAWNER_DURATION;
 
 	void Update()
 	{

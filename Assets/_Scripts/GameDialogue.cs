@@ -96,6 +96,7 @@ public class GameDialogue : MonoBehaviour
 				break;
 			case estate.Win:
 				m_CurrentLine = WIN;
+				m_EndLine = m_TextLines.Length - 1;
 				break;
 			default:
 				Debug.Log("Should not see this");
@@ -104,8 +105,13 @@ public class GameDialogue : MonoBehaviour
 	}
 
 	public void SetGameState()
-	{
-		if (GameController.instance.ReturnGameData().GetTextStarted() == 0)
+	{		
+		//TODO: Always set boss died if this is the win scene
+		if (LevelManager.instance.ReturnCurrentScene() == 3)
+		{
+			GameController.instance.ReturnGameData().SaveBossDied();
+		}
+		if (GameController.instance.ReturnGameData().GetTextStarted() == 0 && GameController.instance.ReturnGameData().GetBossDied() == 0)
 		{
 			GameController.instance.ReturnGameData().SaveTextStarted();
 			SetDialogueState(0);

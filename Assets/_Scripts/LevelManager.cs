@@ -24,11 +24,11 @@ public class LevelManager : MonoBehaviour
 
 	void Start()
 	{
-		if (SceneManager.GetActiveScene().buildIndex == 0)
+		if (ReturnCurrentScene() == 0)
 		{
 			StartCoroutine("LoadTitle");
 		}
-		if (SceneManager.GetActiveScene().buildIndex == 2)
+		if (ReturnCurrentScene() == 2 || ReturnCurrentScene() == 3)
 		{
 			Debug.Log("GameLevel loaded");
 			m_Instructions = GameObject.FindGameObjectWithTag("instructions");
@@ -40,9 +40,8 @@ public class LevelManager : MonoBehaviour
 
 	void Update()
 	{
-		if (m_CurrentSceneCount == 1 && SceneManager.GetActiveScene().buildIndex == 2)
+		if (m_CurrentSceneCount == 1 && ReturnCurrentScene() == 2)
 		{
-			Debug.Log("Reset Text");
 			m_Instructions.SetActive(true);
 			GameController.instance.ReturnGameData().ResetTextPlayerPrefs();
 		}
@@ -58,7 +57,6 @@ public class LevelManager : MonoBehaviour
 	IEnumerator ReloadScene()
 	{
 		yield return new WaitUntil(() => GameController.instance.ReturnGameOverPanel().GameOver());
-		Debug.Log("Should reload Scene");
 		yield return new WaitForSeconds(LOAD_NEXT_SCENE_DURATION);
 		LoadLevel("Game");
 	}
@@ -66,9 +64,8 @@ public class LevelManager : MonoBehaviour
 	IEnumerator LoadWin()
 	{
 		yield return new WaitUntil(() => GameController.instance.ReturnGameOverPanel().Win());
-		Debug.Log("Should start loading win scene");
 		yield return new WaitForSeconds(LOAD_NEXT_SCENE_DURATION);
-		Debug.Log("This should load the win scene");
+		LoadLevel("Win");
 	}
 
 	public void LoadLevel(string levelName)
@@ -79,5 +76,10 @@ public class LevelManager : MonoBehaviour
 	public void StartNewGame()
 	{
 		SceneManager.LoadScene("Game");
+	}
+
+	public int ReturnCurrentScene()
+	{
+		return SceneManager.GetActiveScene().buildIndex;
 	}
 }

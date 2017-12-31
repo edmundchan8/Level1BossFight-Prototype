@@ -63,6 +63,9 @@ public class GameController : MonoBehaviour
 	BackPackScript m_BackPack;
 
 	[SerializeField]
+	EasterEgg m_EasterEgg;
+
+	[SerializeField]
 	FollowPlayer m_FollowPlayerScript;
 
 	public static GameController instance;
@@ -196,5 +199,10 @@ public class GameController : MonoBehaviour
 	public GameOverPanel ReturnGameOverPanel()
 	{
 		return m_GameOverPanel;
+	}
+
+	public EasterEgg ReturnEasterEgg()
+	{
+		return m_EasterEgg;
 	}
 }
