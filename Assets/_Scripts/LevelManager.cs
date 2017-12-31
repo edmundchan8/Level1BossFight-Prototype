@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 	public static LevelManager instance;
 	float LOAD_NEXT_SCENE_DURATION = 2f;
 	public static int m_CurrentSceneCount;
+	GameObject m_Instructions;
 
 	void Awake()
 	{
@@ -29,6 +30,9 @@ public class LevelManager : MonoBehaviour
 		}
 		if (SceneManager.GetActiveScene().buildIndex == 2)
 		{
+			Debug.Log("GameLevel loaded");
+			m_Instructions = GameObject.FindGameObjectWithTag("instructions");
+			m_Instructions.SetActive(false);
 			StartCoroutine("ReloadScene");
 			StartCoroutine("LoadWin");
 		}
@@ -39,6 +43,7 @@ public class LevelManager : MonoBehaviour
 		if (m_CurrentSceneCount == 1 && SceneManager.GetActiveScene().buildIndex == 2)
 		{
 			Debug.Log("Reset Text");
+			m_Instructions.SetActive(true);
 			GameController.instance.ReturnGameData().ResetTextPlayerPrefs();
 		}
 		m_CurrentSceneCount = SceneManager.GetActiveScene().buildIndex;

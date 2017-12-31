@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetButtonDown("Attack"))
+		if (Input.GetButtonDown("Attack") && !GameController.instance.ReturnPlayerStats().PlayerDead() && !GameController.instance.ReturnGameDialogue().IsSpeechBoxActive())
 		{
 			SetAttackingAnimDirection();
 			m_Attack.enabled = true;

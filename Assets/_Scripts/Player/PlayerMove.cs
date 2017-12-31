@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
 
 	void FixedUpdate () 
 	{
-		if (!GameController.instance.ReturnPlayerStats().PlayerDead())
+		if (!GameController.instance.ReturnPlayerStats().PlayerDead() && !GameController.instance.ReturnGameDialogue().IsSpeechBoxActive())
 		{
 			float horizontalMovement = Input.GetAxis("Horizontal");
 			m_PlayerAnimator.SetFloat("Movement", horizontalMovement);
@@ -38,6 +38,10 @@ public class PlayerMove : MonoBehaviour
 			if (verticalMovement >= 0.1f)
 			{
 				m_PlayerAnimator.SetBool("IsFacingUp", true);
+			}
+			else
+			{
+				m_PlayerAnimator.SetBool("IsFacingUp", false);
 			}
 
 			m_Rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * m_PlayerSpeed, Input.GetAxis("Vertical") * m_PlayerSpeed);

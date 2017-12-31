@@ -127,4 +127,9 @@ public class GameDialogue : MonoBehaviour
 			SetDialogueState(4);
 		}
 	}
+
+	public bool IsSpeechBoxActive()
+	{
+		return gameObject.activeSelf;
+	}
 }
